@@ -3,6 +3,9 @@ export default function Error() {
 
   return (
     <>
+      <Helmet>
+        <title>Error</title>
+      </Helmet>
       <nav class="navbar navbar-expand-md bg-black bg-gradient">
         <div class="container-fluid">
           <a class="navbar-brand" href="/">nekoha.moe</a>

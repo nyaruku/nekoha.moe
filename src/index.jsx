@@ -5,6 +5,9 @@ function Index() {
 
   return (
     <>
+      <Helmet>
+        <title>Home</title>
+      </Helmet>
       <nav class="navbar navbar-expand-md bg-black bg-gradient">
         <div class="container-fluid">
           <a class="navbar-brand" href="/">nekoha.moe</a>
