@@ -1,4 +1,4 @@
-# nekoha.mode
+# nekoha.moe
 
 My own personal website
 made with: React, Vite, Bootstrap, Sass
