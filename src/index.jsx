@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { Helmet } from "react-helmet";
 
 function Index() {
-
   return (
     <>
       <Helmet>
