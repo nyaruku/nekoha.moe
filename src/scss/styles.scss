@@ -1,0 +1,35 @@
+@import "./fonts.scss";
+
+$body-color: white;
+$primary-text-emphasis: white;
+$secondary-text-emphasis: rgb(0 206 255);
+$warning-text-emphasis: rgb(0 153 255);
+
+$primary: rgb(12,12,12);
+
+// Navbar
+$navbar-light-brand-color: $secondary-text-emphasis;
+$navbar-light-hover-color: white;
+$navbar-light-active-color: white;
+$navbar-light-color: $warning-text-emphasis;
+$navbar-light-toggler-border-color: rgb(34, 34, 34);
+
+// Cards
+$card-bg: $primary;
+$card-title-color: $secondary-text-emphasis;
+$card-border-color: white;
+.card {
+  &.card-error {
+    width: 32rem;
+  }
+}
+
+// CSS
+button.navbar-toggler {
+  span {
+    background-image: url(../icons/navbar/toggler.svg);
+  }
+}
+
+// Import of Bootstrap
+@import '~bootstrap/scss/bootstrap';
