@@ -1,0 +1,16 @@
+// List Group
+li.list-group-item {
+    background-color: $primary;
+    margin: 0.4rem;
+
+    a.log-link {
+        color: rgb(0, 206, 255);
+    }
+    a.log-link:hover {
+        text-shadow: rgb(72, 65, 255) 5px 0px 13px, rgb(72, 65, 255) -5px 0px 13px;
+    }
+    .text-bg-info {
+        color: white !important;
+        background-color: $info !important;
+    }
+}

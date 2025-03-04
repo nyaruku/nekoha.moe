@@ -9,7 +9,7 @@ import LiveOsu from './live-osu.jsx'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
 // CSS + SCSS
-import './scss/styles.scss'
+import './scss/theme.scss'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>

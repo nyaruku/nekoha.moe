@@ -1,0 +1,18 @@
+$body-color: white;
+
+// Background
+$primary: rgb(12, 12, 12);
+$secondary: rgb(0, 206, 255);
+$info: rgb(0, 110, 255);
+$dark: rgb(117, 117, 117);
+
+// Foreground
+$primary-text-emphasis: white;
+$secondary-text-emphasis: $secondary;
+$dark-text-emphasis: $dark;
+
+// Navbar
+$navbar-light-brand-color: white;
+$navbar-light-hover-color: white;
+$navbar-light-active-color: white;
+$navbar-light-color: $dark-text-emphasis;

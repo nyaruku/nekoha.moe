@@ -1,0 +1,19 @@
+a.navbar-brand {
+    text-shadow: $secondary -3px 0px 6px, white 0px 0px 1px, $secondary 6px 0px 20px;
+}
+  
+a.nav-link:hover {
+    text-shadow: white 0px 0px 6px;
+}
+
+.navbar-toggler {
+    border: none;
+}
+
+// CSS
+button.navbar-toggler {
+    border: none;
+    span {
+        background-image: url(../icons/navbar/toggler.svg);
+    }
+}

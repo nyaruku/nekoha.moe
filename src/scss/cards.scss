@@ -1,0 +1,9 @@
+// Cards
+$card-bg: $primary;
+$card-title-color: $secondary;
+$card-border-color: white;
+.card {
+  &.card-error {
+    width: 32rem;
+  }
+}
