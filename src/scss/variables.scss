@@ -4,15 +4,16 @@ $body-color: white;
 $primary: rgb(12, 12, 12);
 $secondary: rgb(0, 206, 255);
 $info: rgb(0, 110, 255);
-$dark: rgb(117, 117, 117);
+$dark: rgb(37, 37, 41);
+$light: rgb(99,99,99);
 
 // Foreground
 $primary-text-emphasis: white;
 $secondary-text-emphasis: $secondary;
-$dark-text-emphasis: $dark;
+$light-text-emphasis: $light;
 
 // Navbar
 $navbar-light-brand-color: white;
 $navbar-light-hover-color: white;
 $navbar-light-active-color: white;
-$navbar-light-color: $dark-text-emphasis;
+$navbar-light-color: $light-text-emphasis;
