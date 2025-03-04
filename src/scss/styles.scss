@@ -1,18 +1,54 @@
 @import "./fonts.scss";
+@import "./variables.scss";
 
 $body-color: white;
-$primary-text-emphasis: white;
 $secondary-text-emphasis: rgb(0 206 255);
-$warning-text-emphasis: rgb(0 153 255);
+$dark-text-emphasis: rgb(117 117 117);
 
-$primary: rgb(12,12,12);
+// Background
+$primary: rgb(12, 12, 12);
+$secondary: rgb(0, 206, 255);
+$info: rgb(0, 110, 255);
+
+// Foreground
+$primary-text-emphasis: white;
+$secondary-text-emphasis: $secondary;
 
 // Navbar
-$navbar-light-brand-color: $secondary-text-emphasis;
+$navbar-light-brand-color: white;
 $navbar-light-hover-color: white;
 $navbar-light-active-color: white;
-$navbar-light-color: $warning-text-emphasis;
-$navbar-light-toggler-border-color: rgb(34, 34, 34);
+$navbar-light-color: $dark-text-emphasis;
+
+a.navbar-brand {
+  text-shadow: $secondary-text-emphasis -3px 0px 6px, white 0px 0px 1px, $secondary-text-emphasis 6px 0px 20px;
+}
+
+a.nav-link:hover {
+  text-shadow: rgb(255, 255, 255) 0px 0px 6px;
+}
+
+.navbar-toggler {
+  border: none;
+}
+
+// List Group
+
+li.list-group-item {
+  background-color: $primary;
+  margin: 0.4rem;
+}
+a.log-link {
+  color: rgb(0, 206, 255);
+}
+a.log-link:hover {
+  text-shadow: rgb(72, 65, 255) 5px 0px 13px, rgb(72, 65, 255) -5px 0px 13px;
+}
+
+.text-bg-info {
+  color: white !important;
+  background-color: $info !important;
+}
 
 // Cards
 $card-bg: $primary;

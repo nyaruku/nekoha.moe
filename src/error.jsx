@@ -13,9 +13,12 @@ export default function Error() {
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbar-content" toggle="collapse" data-target=".navbar-collapse">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link" href="/">Home</a>
+            <ul class="navbar-nav">
+              <li className="nav-item">
+                <a className="nav-link" href="/">Home</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" href="/chat/osu">Live osu! Chat</a>
               </li>
             </ul>
           </div>

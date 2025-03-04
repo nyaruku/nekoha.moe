@@ -18,5 +18,14 @@ export default defineConfig({
         assetFileNames: `assets/[name].[ext]`
       }
     }
+  },
+  server: {
+    proxy: {
+      '/api': 'http://localhost:5000', // Proxy API requests to Express backend
+      '/api/live/osu': {
+        target: 'http://localhost:5000/live', // Ensure the target URL matches the WebSocket namespace
+        ws: true,  // Enable WebSocket proxy
+      },
+    },
   }
 })
