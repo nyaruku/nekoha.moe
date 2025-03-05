@@ -64,7 +64,13 @@ export default function LiveChat() {
                 <a className="nav-link active" aria-current="page" href="/chat/osu">Live osu! Chat</a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" target="_black" href="https://github.com/nyaruku/nekoha.moe">GitHub</a>
+                <a className="nav-link" target="_blank" href="https://github.com/nyaruku/nekoha.moe">GitHub</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" target="_blank" href="https://discord.gg/FN6vauFTGA">Discord</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" target="_blank" href="https://discord.gg/FN6vauFTGA">Discord</a>
               </li>
             </ul>
           </div>
