@@ -26,3 +26,10 @@ $navbar-light-toggler-icon-bg: url("data:image/svg+xml,<svg xmlns='http://www.w3
 $card-bg: $primary;
 $card-title-color: $secondary;
 $card-border-color: white;
+
+// Form
+// Override Bootstrap's default input variables
+$input-bg: #000; // Black background
+$input-color: #fff; // White text
+$input-border-color: #444; // Darker border for better contrast
+$input-placeholder-color: rgba(255, 255, 255, 0.5); // Light placeholder

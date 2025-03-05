@@ -15,11 +15,17 @@ function Index() {
           </button>
           <div class="collapse navbar-collapse" id="navbar-content" toggle="collapse" data-target=".navbar-collapse">
             <ul class="navbar-nav">
-            <li className="nav-item">
+              <li className="nav-item">
                 <a className="nav-link active" aria-current="page" href="/">Home</a>
               </li>
               <li className="nav-item">
+                <a className="nav-link" href="/log/osu">osu! Log (Beta)</a>
+              </li>
+              <li className="nav-item">
                 <a className="nav-link" href="/chat/osu">Live osu! Chat</a>
+              </li>
+              <li className="nav-item">
+                <a className="nav-link" target="_black" href="https://github.com/nyaruku/nekoha.moe">GitHub</a>
               </li>
             </ul>
           </div>

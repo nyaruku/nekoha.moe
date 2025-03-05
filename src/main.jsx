@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from './index.jsx'
 import Error from './error.jsx'
 import LiveOsu from './live-osu.jsx'
+import LogOsu from './log/osu.jsx'
 
 // Bootstrap
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
@@ -17,6 +18,7 @@ createRoot(document.getElementById('root')).render(
       <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/chat/osu" element={<LiveOsu />} />
+          <Route path="/log/osu" element={<LogOsu />} />
           <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
