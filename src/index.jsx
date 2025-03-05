@@ -29,10 +29,7 @@ function Index() {
               </li>
               <li className="nav-item">
                 <a className="nav-link" target="_blank" href="https://discord.gg/FN6vauFTGA">Discord</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" target="_blank" href="https://discord.gg/FN6vauFTGA">Discord</a>
-              </li>
+              </li>     
             </ul>
           </div>
         </div>
