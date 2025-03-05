@@ -22,6 +22,8 @@ export default function osu() {
   }, []);
 
   const fetchEntries = () => {
+    setEntries([]); // Clear previous results before fetching new ones
+  
     const params = { ...filters };
     if (filters.start) {
       params.start = parse(filters.start, "yyyy-MM-dd HH:mm", new Date()).getTime();
@@ -29,7 +31,7 @@ export default function osu() {
     if (filters.end) {
       params.end = parse(filters.end, "yyyy-MM-dd HH:mm", new Date()).getTime();
     }
-
+  
     axios.get('/api/log/osu', { params })
       .then(response => {
         setEntries(response.data);
