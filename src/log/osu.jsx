@@ -50,33 +50,6 @@ export default function osu() {
       <Helmet>
         <title>#osu</title>
       </Helmet>
-      <nav className="navbar navbar-expand-md bg-black bg-gradient">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="/">nekoha.moe</a>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbar-content" toggle="collapse" data-target=".navbar-collapse">
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <a className="nav-link" href="/">Home</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="/log/osu">osu! Log (Beta)</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/chat/osu">Live osu! Chat</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" target="_blank" href="https://github.com/nyaruku/nekoha.moe">GitHub</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" target="_blank" href="https://discord.gg/FN6vauFTGA">Discord</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
 
       <div className="container mt-5">
         <h3>#osu Log (Beta)</h3>
@@ -116,14 +89,11 @@ export default function osu() {
             <button type="submit" className="btn btn-primary">Filter</button>
           </div>
         </form>
-
-
         <div className="list-log mt-3">
-  {/* Show result count */}
-  <p className="fw-bold">
-    {entries.length > 0 ? `Showing ${entries.length} results` : "No results found"}
-  </p>
-
+          {/* Show result count */}
+          <p className="fw-bold">
+            {entries.length > 0 ? `Showing ${entries.length} results` : "No results found"}
+          </p>
           {entries.length > 0 ? (
             entries.map((entry) => (
               <ol className={`list-group ${entry.isNew ? 'new-entry' : ''}`} key={entry.timestamp}>

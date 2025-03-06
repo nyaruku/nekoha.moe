@@ -5,3 +5,39 @@ a.navbar-brand {
 a.nav-link:hover {
     text-shadow: white 0px 0px 6px;
 }
+
+// HARD OVERWRITE FOR LOG-NAVBAR
+// Will Probably overwrite at some point
+// because this all is wrong
+// that's not the way how to use bootstrap
+nav.navbar.navbar-log {
+    background-color: $c_darker;
+    a.navbar-brand {
+        font-size: 1rem;
+        text-shadow: white 0px 0px 6px;
+    }
+    .navbar-toggler-icon {
+            background-image: url("data:image/svg+xml,%3Csvg fill='%23ffffff' width='800px' height='800px' viewBox='0 0 1920 1920' xmlns='http://www.w3.org/2000/svg' stroke='%23ffffff'%3E%3Cpath d='M1703.534 960c0-41.788-3.84-84.48-11.633-127.172l210.184-182.174-199.454-340.856-265.186 88.433c-66.974-55.567-143.323-99.389-223.85-128.415L1158.932 0h-397.78L706.49 269.704c-81.43 29.138-156.423 72.282-223.962 128.414l-265.073-88.32L18 650.654l210.184 182.174C220.39 875.52 216.55 918.212 216.55 960s3.84 84.48 11.633 127.172L18 1269.346l199.454 340.856 265.186-88.433c66.974 55.567 143.322 99.389 223.85 128.415L761.152 1920h397.779l54.663-269.704c81.318-29.138 156.424-72.282 223.963-128.414l265.073 88.433 199.454-340.856-210.184-182.174c7.793-42.805 11.633-85.497 11.633-127.285m-743.492 395.294c-217.976 0-395.294-177.318-395.294-395.294 0-217.976 177.318-395.294 395.294-395.294 217.977 0 395.294 177.318 395.294 395.294 0 217.976-177.317 395.294-395.294 395.294' fill-rule='evenodd'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            width: 20px;
+            height: 20px;    
+    }
+}
+div.navbar-log-grid {
+    div.offcanvas.offcanvas-start {
+        background-color: $c_darker;
+        background-image: linear-gradient(360deg, rgb(20 20 20), rgb(0 0 0)) !important;
+        button.btn-close {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23FFF'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e");
+        }
+        display: none;
+        &.show {
+            display: block;
+        }
+        &.showing {
+            display: block;
+        }
+    
+    }
+}

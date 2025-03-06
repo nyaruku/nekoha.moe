@@ -46,34 +46,7 @@ export default function LiveChat() {
       <Helmet>
         <title>#osu Live Chat</title>
       </Helmet>
-      <nav className="navbar navbar-expand-md bg-black bg-gradient">
-        <div className="container-fluid">
-          <a className="navbar-brand" href="/">nekoha.moe</a>
-          <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-content" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span className="navbar-toggler-icon"></span>
-          </button>
-          <div className="collapse navbar-collapse" id="navbar-content" toggle="collapse" data-target=".navbar-collapse">
-            <ul className="navbar-nav">
-              <li className="nav-item">
-                <a className="nav-link" href="/">Home</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" href="/log/osu">osu! Log (Beta)</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link active" aria-current="page" href="/chat/osu">Live osu! Chat</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" target="_blank" href="https://github.com/nyaruku/nekoha.moe">GitHub</a>
-              </li>
-              <li className="nav-item">
-                <a className="nav-link" target="_blank" href="https://discord.gg/FN6vauFTGA">Discord</a>
-              </li>
-            </ul>
-          </div>
-        </div>
-      </nav>
-
+      
       <div className="container mt-5">
         <h3>Live osu! Chat</h3>
         <p>(A bit buggy... refresh page if u see duplicated messages/.etc)</p>
