@@ -1,0 +1,29 @@
+/* For Chrome, Edge (79+), Safari */
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+::-webkit-scrollbar-track {
+    background: #101010; 
+}
+
+::-webkit-scrollbar-thumb {
+    background: white; 
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: gray;
+}
+
+/* For Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: white #101010;
+}
+  
+  /* For Internet Explorer & Legacy Edge */
+body {
+    scrollbar-face-color: white;
+    scrollbar-track-color: #101010;
+    scrollbar-arrow-color: gray;
+}

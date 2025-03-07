@@ -5,7 +5,6 @@ import Navbar from './navbar.jsx'
 import Index from './index.jsx'
 import Error from './error.jsx'
 import LiveOsu from './live-osu.jsx'
-import LogOsu from './log/osu.jsx'
 import Log from './log.jsx'
 
 // Bootstrap
@@ -21,7 +20,6 @@ createRoot(document.getElementById('root')).render(
       <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/chat/osu" element={<LiveOsu />} />
-          <Route path="/log/osu" element={<LogOsu />} />
           <Route path="/log" element={<Log />} />
           <Route path="*" element={<Error />} />
       </Routes>

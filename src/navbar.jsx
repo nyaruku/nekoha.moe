@@ -14,7 +14,7 @@ const Navbar = () => {
               <NavLink className="nav-link" to="/" end>Home</NavLink>
             </li>
             <li className="nav-item">
-              <NavLink className="nav-link" to="/log">osu! Message Logs  (Beta)</NavLink>
+              <NavLink className="nav-link" to="/log">osu! Chat Logs</NavLink>
             </li>
             <li className="nav-item">
               <NavLink className="nav-link" to="/chat/osu">Live osu! Chat</NavLink>
