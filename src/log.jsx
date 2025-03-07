@@ -4,7 +4,7 @@ import axios from 'axios';
 import { format, parse } from 'date-fns';
 import DOMPurify from 'dompurify';
 
-import "./scss/log.scss"; // Breaks usual page layout, manual import outside of theme
+
 
 export default function Log() {
     // State to store entries
@@ -20,6 +20,7 @@ export default function Log() {
         sort: 'desc'
     });
     useEffect(() => {
+        import('./scss/log.scss'); // Breaks usual page layout, manual import outside of theme
         fetchEntries();
     }, []);
     const [loading, setLoading] = useState(false);
@@ -58,7 +59,7 @@ export default function Log() {
         </Helmet>
         <nav className="navbar navbar-log">
             <div className="container-fluid">
-                <a className="navbar-brand navbar-log" href="#">
+                <a className="navbar-brand navbar-log">
                     #{activeChannel} ({entries.length})
                 </a>
                 <button className="btn btn-light toggle-menu-sidebar" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation" onClick={() => setIsLeftVisible(!isLeftVisible)}>

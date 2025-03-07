@@ -12,7 +12,7 @@ export default function LiveChat() {
   const [entries, setEntries] = useState([]);
   useEffect(() => {
     // Fetch initial data from backend API using relative URL
-    axios.get('/api/log/osu?limit=50&sort=desc') // Use relative URL for the API call
+    axios.get('/api/log?limit=50&sort=desc') // Use relative URL for the API call
       .then(response => {
         setEntries(response.data); // Store the entries in state
       })
