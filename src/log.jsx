@@ -103,9 +103,19 @@ export default function Log() {
 
   // Handle filter input changes.
   const handleChange = (e) => {
-    setFilters({ ...filters, [e.target.name]: e.target.value });
-    //setFilters({...filters,start: cStart.valueAsNumber});
-    //setFilters({...filters,end: cEnd.valueAsNumber});
+    const { name, value } = e.target;
+  const updatedFilters = { ...filters, [name]: value };
+
+  // Disable unsupported filters when "all" is selected
+  if (name === "channel" && value === "all") {
+    updatedFilters.user_id = "";
+    updatedFilters.username = "";
+    updatedFilters.message = "";
+    updatedFilters.start = "";
+    updatedFilters.end = "";
+  }
+
+  setFilters(updatedFilters);
 
   };
 
@@ -253,25 +263,30 @@ export default function Log() {
                     <option value="vietnamese">#vietnamese</option>
                 </select>
               </div>
+
+              {filters.channel === "all" && (
+                <p className="text-danger fw-bold">Filtering is not supported,<br></br>when "All Channels" are selected.</p>
+              )}
+
               <div className="col-12 mb-2">
                 <label className="form-label">User ID equals</label>
-                <input type="number" className="form-control light-icon-form" name="user_id" value={filters.user_id} onChange={handleChange} />
+                <input type="number" className="form-control light-icon-form" name="user_id" value={filters.user_id} onChange={handleChange} disabled={filters.channel === "all"}/>
               </div>
               <div className="col-12 mb-2">
                 <label className="form-label">Username equals</label>
-                <input type="text" className="form-control" name="username" value={filters.username} onChange={handleChange} />
+                <input type="text" className="form-control" name="username" value={filters.username} onChange={handleChange} disabled={filters.channel === "all"}/>
               </div>
               <div className="col-12 mb-2">
                 <label className="form-label">Message Contains String</label>
-                <input type="text" className="form-control" name="message" value={filters.message} onChange={handleChange} />
+                <input type="text" className="form-control" name="message" value={filters.message} onChange={handleChange} disabled={filters.channel === "all"}/>
               </div>
               <div className="col-12 mb-2">
                 <label className="form-label">Start Time</label>
-                <input type="datetime-local" className="form-control light-icon-form" id="cStart" name="start" value={filters.start} onChange={handleChange} />
+                <input type="datetime-local" className="form-control light-icon-form" id="cStart" name="start" value={filters.start} onChange={handleChange} disabled={filters.channel === "all"}/>
               </div>
               <div className="col-12 mb-2">
                 <label className="form-label">End Time</label>
-                <input type="datetime-local" className="form-control light-icon-form" id="cEnd" name="end" value={filters.end} onChange={handleChange} />
+                <input type="datetime-local" className="form-control light-icon-form" id="cEnd" name="end" value={filters.end} onChange={handleChange} disabled={filters.channel === "all"}/>
               </div>
               <div className="col-12 mb-2">
                 <label className="form-label">Limit (0 for full data)</label>

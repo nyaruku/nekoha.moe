@@ -1,3 +1,7 @@
 .form-control, .form-select {
     border-radius: 0 !important; // remove ugly piece of shit
 }
+
+.form-control:disabled {
+    background-color: #5b5b5b !important;
+}
