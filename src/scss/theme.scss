@@ -13,36 +13,36 @@
 
 div.log-db-info {
     background-color: black !important;
-    div.container.innerDiv {
+    div.innerDiv {
       padding-top: 1rem !important;
       p {
         margin: 0 !important;
       }
-      /* App.css */
       table {
-        table-layout: auto; /* allow the table to shrink to fit content */
-        width: auto;        /* table width is determined by its content */
+        width: unset !important;
+        table-layout: auto;
+        width: auto;
       }
   
       table {
-        table-layout: auto; /* Auto size based on content */
-        width: auto; /* Prevent forced expansion */
-        max-width: max-content; /* Ensure it only takes as much space as needed */
-        display: inline-table; /* Prevent table from stretching full width */
-        border-collapse: collapse; /* Remove unnecessary spacing */
+        table-layout: auto;
+        max-width: max-content; 
+        display: inline-table; 
+        border-collapse: collapse; 
       }
       
       table th,
       table td {
-        white-space: nowrap; /* Prevent wrapping */
-        padding: 2px 5px; /* Minimal padding */
-        text-align: left; /* Align text properly */
-        font-size: 14px; /* Reduce font size slightly */
+        font-weight: normal !important;
+        white-space: nowrap;
+        padding: 2px 5px; 
+        text-align: left; 
+        font-size: 14px;
       }
       
       .container {
         display: flex;
-        justify-content: center; /* Center the table */
+        justify-content: center;
       
       }
     }

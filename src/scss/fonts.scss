@@ -1,33 +1,41 @@
+$global-font-path: "../fonts";
 $opensans-font-path: "../fonts/open_sans";
 
 // Font-face for Open Sans Regular
 @font-face {
-    font-family: 'Open Sans';
-    src: url('#{$opensans-font-path}/OpenSans-Regular.ttf') format('truetype');
-    font-weight: normal;
-    font-style: normal;
-  }
+  font-family: 'Open Sans';
+  src: url('#{$opensans-font-path}/OpenSans-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+// Font-face for Open Sans Bold
+@font-face {
+  font-family: 'Open Sans';
+  src: url('#{$opensans-font-path}/OpenSans-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+// Font-face for Open Sans Italic
+@font-face {
+  font-family: 'Open Sans';
+  src: url('#{$opensans-font-path}/OpenSans-Italic.ttf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
   
-  // Font-face for Open Sans Bold
-  @font-face {
-    font-family: 'Open Sans';
-    src: url('#{$opensans-font-path}/OpenSans-Bold.ttf') format('truetype');
-    font-weight: bold;
-    font-style: normal;
-  }
-  
-  // Font-face for Open Sans Italic
-  @font-face {
-    font-family: 'Open Sans';
-    src: url('#{$opensans-font-path}/OpenSans-Italic.ttf') format('truetype');
-    font-weight: normal;
-    font-style: italic;
-  }
-  
-  // Font-face for Open Sans Bold Italic
-  @font-face {
-    font-family: 'Open Sans';
-    src: url('#{$opensans-font-path}/OpenSans-BoldItalic.ttf') format('truetype');
-    font-weight: bold;
-    font-style: italic;
+// Font-face for Open Sans Bold Italic
+@font-face {
+  font-family: 'Open Sans';
+  src: url('#{$opensans-font-path}/OpenSans-BoldItalic.ttf') format('truetype');
+  font-weight: bold;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: 'IBM VGA';
+  src: url('#{$global-font-path}/ibm_vga8.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }

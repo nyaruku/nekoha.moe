@@ -29,11 +29,14 @@ function App() {
 
   return (
     <div className="log-db-info">
-        <div class="container innerDiv">
+        <div class="innerDiv">
       <p>Database Info: osu_logger</p>
       <p>Database Size: {dbInfo.totalDatabaseSizeMB} MB</p>
       <p>Allocated (real) Size: {dbInfo.actualDiskAllocMB} MB</p>
       <p>Total Message Count: {dbInfo.totalRowCount}</p>
+      <p>######################################</p>
+      <p># DATA IS CACHED, UPDATED EVERY HOUR #</p>
+      <p>######################################</p>
       <table className="table table-sm table-bordered table-striped mt-3 table-dark table-hover">
         <thead>
           <tr>
