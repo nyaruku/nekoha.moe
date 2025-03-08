@@ -27,6 +27,9 @@ const Navbar = () => {
               <a href="/log" className="nav-link" onClick={(e) => handleLinkClick(e, "/log")}>osu! Chat Logs</a>
             </li>
             <li className="nav-item">
+              <a href="/log/info" className="nav-link" onClick={(e) => handleLinkClick(e, "/log/info")}>Log Database Info</a>
+            </li>
+            <li className="nav-item">
               <a href="/chat/osu" className="nav-link" onClick={(e) => handleLinkClick(e, "/chat/osu")}>Live osu! Chat</a>
             </li>
             <li className="nav-item">
