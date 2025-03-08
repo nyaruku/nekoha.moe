@@ -6,7 +6,7 @@ import Index from './index.jsx'
 import Error from './error.jsx'
 import LiveOsu from './live-osu.jsx'
 import Log from './log.jsx'
-
+ 
 // Bootstrap
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 
