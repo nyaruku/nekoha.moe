@@ -98,7 +98,7 @@ export default function Log() {
   }, [entries, filters, loading, hasMore]);
 
   useEffect(() => {
-    import('./scss/log.scss'); // manual theme import exclusive to log page
+    import('./scss/log.scss'); // manual theme import exclusive to page
     fetchInitialEntries();
   }, []);
 

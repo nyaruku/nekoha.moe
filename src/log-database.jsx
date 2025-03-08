@@ -7,6 +7,7 @@ function App() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    import('./scss/log-database.scss'); // manual theme import exclusive to page
     axios.get('/api/log/stats')
       .then(response => {
         setDbInfo(response.data);
@@ -30,9 +31,9 @@ function App() {
     <div className="log-db-info">
         <div class="container innerDiv">
       <p>Database Info: osu_logger</p>
-      <p>
-        Total Database Size: {dbInfo.totalDatabaseSizeMB} MB | Total Row Count: {dbInfo.totalRowCount}
-      </p>
+      <p>Database Size: {dbInfo.totalDatabaseSizeMB} MB</p>
+      <p>Allocated (real) Size: {dbInfo.actualDiskAllocMB} MB</p>
+      <p>Total Message Count: {dbInfo.totalRowCount}</p>
       <table className="table table-sm table-bordered table-striped mt-3 table-dark table-hover">
         <thead>
           <tr>
