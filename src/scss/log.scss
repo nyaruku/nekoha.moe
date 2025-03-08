@@ -72,6 +72,16 @@ a.log-name {
   }
 }
 
+a.log-link {
+  background-color: rgb(0 61 121);
+  color: #2ceaff;
+}
+
+.log-action-text {
+  color: rgb(167 167 167);
+  font-style: italic;
+}
+
 a.navbar-brand.navbar.log {
   cursor: default;
 }

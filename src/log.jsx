@@ -6,6 +6,7 @@ import DOMPurify from 'dompurify';
 import { VariableSizeList as List } from 'react-window';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import { start } from "@popperjs/core";
+import Message from "./components/logMessage.jsx";
 
 export default function Log() {
   // State to store entries and filters
@@ -151,7 +152,7 @@ export default function Log() {
           >
             {entry.username}
           </a>
-          <span className="text-break">{DOMPurify.sanitize(entry.message)}</span>
+          <Message text={DOMPurify.sanitize(entry.message)}/>
         </div>
       </div>
     );
