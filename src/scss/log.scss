@@ -68,6 +68,7 @@ div.left-column.hidden {
 a.log-name {
   color: $secondary-text-emphasis;
   &:hover {
+      color: white;
       text-shadow: rgb(72, 65, 255) 5px 0px 13px, rgb(72, 65, 255) -5px 0px 13px;
   }
 }
