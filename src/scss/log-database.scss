@@ -5,3 +5,9 @@
 div.log-db-info {
     font-family: 'IBM VGA', sans-serif !important;
 }
+
+.log-db-info {
+    .innerDiv {
+        margin-left: 1rem;
+    }
+}
