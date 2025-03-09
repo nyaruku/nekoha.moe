@@ -1,11 +1,10 @@
 import { Helmet } from "react-helmet";
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import axios from 'axios';
-import { format, parse } from 'date-fns';
+import { format } from 'date-fns';
 import DOMPurify from 'dompurify';
 import { VariableSizeList as List } from 'react-window';
 import AutoSizer from 'react-virtualized-auto-sizer';
-import { start } from "@popperjs/core";
 import Message from "./components/logMessage.jsx";
 
 export default function Log() {
