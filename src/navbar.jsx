@@ -30,9 +30,6 @@ const Navbar = () => {
               <a href="/log/info" className="nav-link" onClick={(e) => handleLinkClick(e, "/log/info")}>Log Database Info</a>
             </li>
             <li className="nav-item">
-              <a href="/chat/osu" className="nav-link" onClick={(e) => handleLinkClick(e, "/chat/osu")}>Live osu! Chat</a>
-            </li>
-            <li className="nav-item">
               <a className="nav-link" target="_blank" rel="noopener noreferrer" href="https://grafana.nekoha.moe/public-dashboards/3f75dde11fcd4bad933dc648796284b5">Server Monitor</a>
             </li>
             <li className="nav-item">

@@ -20,7 +20,6 @@ createRoot(document.getElementById('root')).render(
       <Navbar />
       <Routes>
           <Route path="/" element={<Index />} />
-          <Route path="/chat/osu" element={<LiveOsu />} />
           <Route path="/log" element={<Log />} />
           <Route path="/log/info" element={<LogDbStats />} />
           <Route path="*" element={<Error />} />
