@@ -22,6 +22,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/api': 'http://localhost:5000', // Proxy API requests to Express backend
+      '/api2': 'http://localhost:5001', // Proxy API requests to Express backend
       '/api/live/osu': {
         target: 'http://localhost:5000/live', // Ensure the target URL matches the WebSocket namespace
         ws: true,  // Enable WebSocket proxy
