@@ -21,6 +21,7 @@
     "dompurify": "^3.2.4",
     "dotenv": "^16.4.7",
     "express": "^4.21.2",
+    "fast-csv": "^5.0.2",
     "http": "^0.0.1-security",
     "mysql2": "^3.13.0",
     "path": "^0.12.7",
