@@ -76,6 +76,10 @@ a.log-name {
 a.log-link {
   background-color: rgb(0 61 121);
   color: #2ceaff;
+  &:hover {
+    text-shadow: rgb(0, 206, 255) -10px 0px 6px, white 0px 0px 1px, rgb(0, 206, 255) 10px 0px 21px, rgb(0, 206, 255) 0px 5px 6px, rgb(0, 206, 255) 0px -5px 6px;
+    color: white;
+  }
 }
 
 .log-action-text {
