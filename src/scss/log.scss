@@ -69,7 +69,7 @@ a.log-name {
   color: $secondary-text-emphasis;
   &:hover {
       color: white;
-      text-shadow: rgb(72, 65, 255) 5px 0px 13px, rgb(72, 65, 255) -5px 0px 13px;
+      text-shadow: rgb(0, 206, 255) -10px 0px 6px, white 0px 0px 1px, rgb(0, 206, 255) 10px 0px 21px, rgb(0, 206, 255) 0px 5px 6px, rgb(0, 206, 255) 0px -5px 6px;
   }
 }
 
@@ -79,6 +79,7 @@ a.log-link {
   &:hover {
     text-shadow: rgb(0, 206, 255) -10px 0px 6px, white 0px 0px 1px, rgb(0, 206, 255) 10px 0px 21px, rgb(0, 206, 255) 0px 5px 6px, rgb(0, 206, 255) 0px -5px 6px;
     color: white;
+    background-color: rgba(0, 0, 0, 0);
   }
 }
 
