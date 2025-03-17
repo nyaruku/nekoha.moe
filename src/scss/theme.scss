@@ -1,6 +1,6 @@
 @import "./fonts.scss";
 @import "./variables.scss";
-
+@import "./style.scss";
 @import "./navbar.scss";
 @import "./listGroup.scss";
 @import "./cards.scss";
@@ -8,42 +8,5 @@
 @import "./form.scss"; 
 @import "./loadingBar.scss";
 
+
 @import '~bootstrap/scss/bootstrap';
-
-
-div.log-db-info {
-    background-color: black !important;
-    div.innerDiv {
-      padding-top: 1rem !important;
-      p {
-        margin: 0 !important;
-      }
-      table {
-        width: unset !important;
-        table-layout: auto;
-        width: auto;
-      }
-  
-      table {
-        table-layout: auto;
-        max-width: max-content; 
-        display: inline-table; 
-        border-collapse: collapse; 
-      }
-      
-      table th,
-      table td {
-        font-weight: normal !important;
-        white-space: nowrap;
-        padding: 2px 5px; 
-        text-align: left; 
-        font-size: 14px;
-      }
-      
-      .container {
-        display: flex;
-        justify-content: center;
-      
-      }
-    }
-  }

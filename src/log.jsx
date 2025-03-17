@@ -300,9 +300,17 @@ export default function Log() {
                 </select>
               </div>
               <div className="col-12 mb-2">
-                <button type="submit" className="btn btn-primary">Filter</button>
+                <button type="submit" className="btn btn-info col-12">Filter</button>
               </div>
             </form>
+            <div className="col-12 mb-2">
+              {filters.channel != "all" && (
+                <a href={`https://nekoha.moe/api/log/download?channel=` + filters.channel} class="btn btn-info col-12">Download #{filters.channel} Chat</a>
+              )}
+            </div>
+            <div className="col-12">
+                <a href="https://nekoha.moe/api/log/export" class="btn btn-info col-12">Download MySQL Dump</a>
+            </div>
           </div>
         </div>
         <div className={`right-column ${isLeftVisible ? "visible" : "hidden"}`}>

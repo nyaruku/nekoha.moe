@@ -14,6 +14,7 @@ $light-text-emphasis: $light;
 
 // Custom
 $c_darker: rgb(16, 16, 16);
+$d_darker: rgb(20, 20, 20);
 
 // Navbar
 $navbar-light-brand-color: white;
@@ -36,3 +37,7 @@ $input-bg: #000; // Black background
 $input-color: #fff; // White text
 $input-border-color: #444; // Darker border for better contrast
 $input-placeholder-color: rgba(255, 255, 255, 0.5); // Light placeholder
+
+.btn-info {
+    color: #fff !important;
+}
