@@ -26,7 +26,7 @@ function Index() {
                   <li>Age: 20 (18.08.2004)</li>
                   <li>Country: Germany</li>
                   <li>Fav Programming Language: C++</li>
-                  <li>Socially shy and akward</li>
+                  <li>Socially shy and awkward</li>
                 </ul>
               </div>
             </div>
