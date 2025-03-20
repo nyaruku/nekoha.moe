@@ -20,7 +20,7 @@ function Index() {
               <div class="card-body">
                 <h5 class="card-title">Hiii :3</h5>
                 <p class="card-text">
-                  Alright, uhm... i don't know what to really type here,<br/>here are some infos about me: 
+                  Alright, uhm... i don't know what to really type here,<br/>here are some infos about me:
                 </p>
                 <ul>
                   <li>Age: 20 (18.08.2004)</li>
