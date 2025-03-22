@@ -27,14 +27,11 @@ const Navbar = () => {
               <a href="/log" className="nav-link" onClick={(e) => handleLinkClick(e, "/log")}>osu! Chat Logs</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" target="_blank" rel="noopener noreferrer" href="https://grafana.nekoha.moe/public-dashboards/3f75dde11fcd4bad933dc648796284b5">Server Monitor</a>
+              <a href="/ytdlp" className="nav-link" onClick={(e) => handleLinkClick(e, "/ytdlp")}>YTDLP</a>
             </li>
             <li className="nav-item">
-              <a className="nav-link" target="_blank" rel="noopener noreferrer" href="https://github.com/nyaruku/nekoha.moe">GitHub</a>
-            </li>
-            <li className="nav-item">
-              <a className="nav-link" target="_blank" rel="noopener noreferrer" href="https://discord.gg/FN6vauFTGA">Discord</a>
-            </li>     
+              <a className="nav-link" target="_blank" rel="noopener noreferrer" href="https://grafana.nekoha.moe/public-dashboards/3f75dde11fcd4bad933dc648796284b5">Monitor</a>
+            </li>  
           </ul>
         </div>
       </div>

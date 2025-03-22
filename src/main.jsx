@@ -5,6 +5,7 @@ import Navbar from './navbar.jsx'
 import Index from './index.jsx'
 import Error from './error.jsx'
 import Log from './log.jsx'
+import YTDLP from './ytdl.jsx'
 
 // Bootstrap
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
@@ -19,6 +20,7 @@ createRoot(document.getElementById('root')).render(
       <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/log" element={<Log />} />
+          <Route path="/ytdlp" element={<YTDLP />} />
           <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
