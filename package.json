@@ -37,7 +37,8 @@
     "react-virtualized-auto-sizer": "^1.0.25",
     "react-window": "^1.8.11",
     "socket.io": "^4.8.1",
-    "socket.io-client": "^4.8.1"
+    "socket.io-client": "^4.8.1",
+    "yt-dlp-wrap": "^2.3.12"
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
