@@ -1,5 +1,6 @@
 $global-font-path: "../fonts";
 $opensans-font-path: "../fonts/open_sans";
+$chakraPetch-font-path: "../fonts/chakra_petch";
 
 // Font-face for Open Sans Regular
 @font-face {
@@ -39,3 +40,21 @@ $opensans-font-path: "../fonts/open_sans";
   font-weight: normal;
   font-style: normal;
 }
+// ##############
+// CHAKRA_PETCH
+// ##############
+
+@font-face {
+  font-family: 'Chakra Petch';
+  src: url('#{$chakraPetch-font-path}/ChakraPetch-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Open Sans';
+  src: url('#{$chakraPetch-font-path}/ChakraPetch-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
