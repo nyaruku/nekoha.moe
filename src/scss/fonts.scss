@@ -2,6 +2,10 @@ $global-font-path: "../fonts";
 $opensans-font-path: "../fonts/open_sans";
 $chakraPetch-font-path: "../fonts/chakra_petch";
 
+// ##############
+// OPEN SANS
+// ##############
+
 // Font-face for Open Sans Regular
 @font-face {
   font-family: 'Open Sans';
@@ -33,7 +37,9 @@ $chakraPetch-font-path: "../fonts/chakra_petch";
   font-weight: bold;
   font-style: italic;
 }
-
+// ##############
+// IBM VGA
+// ##############
 @font-face {
   font-family: 'IBM VGA';
   src: url('#{$global-font-path}/ibm_vga8.ttf') format('truetype');
