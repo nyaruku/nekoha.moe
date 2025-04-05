@@ -38,6 +38,8 @@ function Index() {
             <ul>
               <li>Discord: railgun_osu</li>
               <li><a href="https://discord.gg/FN6vauFTGA" class="default-link">My Discord Server</a></li>
+              <li><a href="https://github.com/nyaruku" class="default-link">GitHub</a></li>
+              <li><a href="https://github.com/nyaruku/nekoha.moe" class="default-link">GitHub Repo</a></li>
               <li><a href="https://osu.ppy.sh/users/13817114" class="default-link">My osu! Profile</a></li>
               <li><a href="https://twitter.com/railgun_osu" class="default-link">Twitter</a></li>
               <li><a href="https://steamcommunity.com/id/_Railgun_/" class="default-link">Steam</a></li>

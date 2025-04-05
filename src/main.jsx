@@ -20,7 +20,7 @@ createRoot(document.getElementById('root')).render(
       <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/log" element={<Log />} />
-          <Route path="/ytdlp" element={<YTDLP />} />
+          {/*<Route path="/ytdlp" element={<YTDLP />} />*/}
           <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>
