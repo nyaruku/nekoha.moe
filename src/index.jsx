@@ -34,34 +34,46 @@ function Index() {
         </div>
 
         <div className="row">
-          <div className="col-12 col-md-6 mb-4">
-            <ChatBox />
+          <div class="col-12 col-md-8 d-flex flex-column">
+            <div className="mb-3 flex-grow-1">
+              <ChatBox />
+            </div>
           </div>
+          <div class="col-12 col-md-4 d-flex flex-column">
 
-          <div className="card col-12 col-md-6 mb-4">
-            <div className="card-body">
-              <h5 className="card-title">Socials</h5>
-              <ul>
-                <li>Discord: railgun_osu</li>
-                <li>
-                  <a href="https://discord.gg/FN6vauFTGA" className="default-link">My Discord Server</a>
-                </li>
-                <li>
-                  <a href="https://github.com/nyaruku" className="default-link">GitHub</a>
-                </li>
-                <li>
-                  <a href="https://github.com/nyaruku/nekoha.moe" className="default-link">GitHub Repo</a>
-                </li>
-                <li>
-                  <a href="https://osu.ppy.sh/users/13817114" className="default-link">My osu! Profile</a>
-                </li>
-                <li>
-                  <a href="https://twitter.com/railgun_osu" className="default-link">Twitter</a>
-                </li>
-                <li>
-                  <a href="https://steamcommunity.com/id/_Railgun_/" className="default-link">Steam</a>
-                </li>
-              </ul>
+            <div className="card mb-3">
+              <div className="card-body">
+                <h5 className="card-title">Info</h5>
+                  <p class="mb-0">Users online: <span class="text-secondary" id="userCount"></span></p>
+                  <p class="mb-0">Server uptime: <span class="text-secondary" id="serverUptime"></span></p>
+              </div>
+            </div>
+
+            <div className="card mb-3">
+              <div className="card-body">
+                <h5 className="card-title">Socials</h5>
+                <ul>
+                  <li>Discord: railgun_osu</li>
+                  <li>
+                    <a href="https://discord.gg/FN6vauFTGA" className="default-link">My Discord Server</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/nyaruku" className="default-link">GitHub</a>
+                  </li>
+                  <li>
+                    <a href="https://github.com/nyaruku/nekoha.moe" className="default-link">GitHub Repo</a>
+                  </li>
+                  <li>
+                    <a href="https://osu.ppy.sh/users/13817114" className="default-link">My osu! Profile</a>
+                  </li>
+                  <li>
+                    <a href="https://twitter.com/railgun_osu" className="default-link">Twitter</a>
+                  </li>
+                  <li>
+                    <a href="https://steamcommunity.com/id/_Railgun_/" className="default-link">Steam</a>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>

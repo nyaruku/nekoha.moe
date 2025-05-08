@@ -40,7 +40,12 @@ export default function ChatBox() {
       transports: ['websocket'],
       reconnection: true,
     });
-
+    socketRef.current.on('user_count', (count) => {
+      document.getElementById('userCount').textContent = `${count}`;
+    });
+    socketRef.current.on('uptime', (count) => {
+      document.getElementById('serverUptime').textContent = `${count}`;
+    });
     socketRef.current.on('new_message', (message) => {
       console.log('New message received:', message);
       setMessages(prev => [...prev, message]);
