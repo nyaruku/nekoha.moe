@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import { Helmet } from "react-helmet";
+import { Helmet } from 'react-helmet';
 import nekohaImage from './images/nekoha.png';
+import ChatBox from './components/chatBox.jsx';  // Make sure this path matches where you put ChatBox.jsx
 
 function Index() {
   return (
@@ -9,18 +9,18 @@ function Index() {
         <title>Home</title>
       </Helmet>
 
-      {/* Added HTML Content */}
       <div className="container py-4 px-3 mx-auto">
-        <div class="row mt-4">
-          <div class="col-12 col-md-3 align-self-start">
-            <img src={nekohaImage} class="mx-auto d-block img-fluid" alt="nekoha" />
+        <div className="row mt-4">
+          <div className="col-12 col-md-3 align-self-start">
+            <img src={nekohaImage} className="mx-auto d-block img-fluid" alt="nekoha" />
           </div>
-          <div class="col-12 col-md-9 align-self-center">
-            <div class="card mb-4">
-              <div class="card-body">
-                <h5 class="card-title">Hiii :3</h5>
-                <p class="card-text">
-                  Alright, uhm... i don't know what to really type here,<br/>here are some infos about me:
+          <div className="col-12 col-md-9 align-self-center">
+            <div className="card mb-4">
+              <div className="card-body">
+                <h5 className="card-title">Hiii :3</h5>
+                <p className="card-text">
+                  Alright, uhm... I don't know what to really type here,<br />
+                  here are some infos about me:
                 </p>
                 <ul>
                   <li>Age: 20 (18.08.2004)</li>
@@ -32,23 +32,42 @@ function Index() {
             </div>
           </div>
         </div>
-        <div class="card mb-4">
-          <div class="card-body">
-            <h5 class="card-title">Socials</h5>
-            <ul>
-              <li>Discord: railgun_osu</li>
-              <li><a href="https://discord.gg/FN6vauFTGA" class="default-link">My Discord Server</a></li>
-              <li><a href="https://github.com/nyaruku" class="default-link">GitHub</a></li>
-              <li><a href="https://github.com/nyaruku/nekoha.moe" class="default-link">GitHub Repo</a></li>
-              <li><a href="https://osu.ppy.sh/users/13817114" class="default-link">My osu! Profile</a></li>
-              <li><a href="https://twitter.com/railgun_osu" class="default-link">Twitter</a></li>
-              <li><a href="https://steamcommunity.com/id/_Railgun_/" class="default-link">Steam</a></li>
-            </ul>
+
+        <div className="row">
+          <div className="col-12 col-md-6 mb-4">
+            <ChatBox />
+          </div>
+
+          <div className="card col-12 col-md-6 mb-4">
+            <div className="card-body">
+              <h5 className="card-title">Socials</h5>
+              <ul>
+                <li>Discord: railgun_osu</li>
+                <li>
+                  <a href="https://discord.gg/FN6vauFTGA" className="default-link">My Discord Server</a>
+                </li>
+                <li>
+                  <a href="https://github.com/nyaruku" className="default-link">GitHub</a>
+                </li>
+                <li>
+                  <a href="https://github.com/nyaruku/nekoha.moe" className="default-link">GitHub Repo</a>
+                </li>
+                <li>
+                  <a href="https://osu.ppy.sh/users/13817114" className="default-link">My osu! Profile</a>
+                </li>
+                <li>
+                  <a href="https://twitter.com/railgun_osu" className="default-link">Twitter</a>
+                </li>
+                <li>
+                  <a href="https://steamcommunity.com/id/_Railgun_/" className="default-link">Steam</a>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
     </>
-  )
+  );
 }
 
-export default Index
+export default Index;
