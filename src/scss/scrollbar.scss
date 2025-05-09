@@ -1,27 +1,33 @@
-/* For Chrome, Edge (79+), Safari */
+/* Chrome, Edge, Safari */
 ::-webkit-scrollbar {
     width: 20px;
 }
 
 ::-webkit-scrollbar-track {
-    background: #101010; 
+    background: #101010;
+    border-radius: 0;
+    box-shadow: none;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: white; 
+    background: white;
+    border-radius: 0 !important;
+    box-shadow: none;
+    border: none;
 }
 
 ::-webkit-scrollbar-thumb:hover {
     background: gray;
 }
 
-/* For Firefox */
+/* Firefox */
 * {
-    scrollbar-width: thin;
+    scrollbar-width: thin; /* or auto */
     scrollbar-color: white #101010;
+    scrollbar-gutter: stable;
 }
-  
-  /* For Internet Explorer & Legacy Edge */
+
+/* IE & Legacy Edge */
 body {
     scrollbar-face-color: white;
     scrollbar-track-color: #101010;
