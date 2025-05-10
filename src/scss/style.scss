@@ -1,8 +1,61 @@
 a.default-link {
-    text-decoration: none;
-    color: $secondary;
-    &:hover {
-        text-shadow: rgb(0, 206, 255) -10px 0px 6px, white 0px 0px 1px, rgb(0, 206, 255) 10px 0px 21px, rgb(0, 206, 255) 0px 5px 6px, rgb(0, 206, 255) 0px -5px 6px;
-        color: white;
-    }
+  text-decoration: none;
+  color: $secondary;
+  position: relative;
+
+  &:hover {
+    color: white;
+    animation: fogGlowDrift 6s ease-in-out infinite;
+  }
+}
+
+@keyframes fogGlowDrift {
+  0% {
+    text-shadow:
+      rgba(0, 206, 255, 0.6) -10px 0px 6px,
+      white 0px 0px 1px,
+      rgba(0, 206, 255, 0.8) 10px 0px 21px,
+      rgba(0, 206, 255, 0.5) 0px 5px 6px,
+      rgba(0, 206, 255, 0.5) 0px -5px 6px;
+  }
+  25% {
+    text-shadow:
+      rgba(0, 206, 255, 0.4) -7px 7px 6px,
+      white 0px 0px 1px,
+      rgba(0, 206, 255, 0.7) 7px -7px 21px,
+      rgba(0, 206, 255, 0.3) 4px 4px 6px,
+      rgba(0, 206, 255, 0.3) -4px -4px 6px;
+  }
+  50% {
+    text-shadow:
+      rgba(0, 206, 255, 0.2) 0px 10px 6px,
+      white 0px 0px 1px,
+      rgba(0, 206, 255, 0.5) 0px -10px 21px,
+      rgba(0, 206, 255, 0.2) 5px 0px 6px,
+      rgba(0, 206, 255, 0.2) -5px 0px 6px;
+  }
+  75% {
+    text-shadow:
+      rgba(0, 206, 255, 0.4) 7px 7px 6px,
+      white 0px 0px 1px,
+      rgba(0, 206, 255, 0.7) -7px -7px 21px,
+      rgba(0, 206, 255, 0.3) 4px -4px 6px,
+      rgba(0, 206, 255, 0.3) -4px 4px 6px;
+  }
+  100% {
+    text-shadow:
+      rgba(0, 206, 255, 0.6) -10px 0px 6px,
+      white 0px 0px 1px,
+      rgba(0, 206, 255, 0.8) 10px 0px 21px,
+      rgba(0, 206, 255, 0.5) 0px 5px 6px,
+      rgba(0, 206, 255, 0.5) 0px -5px 6px;
+  }
+}
+
+.border-glow {
+  box-shadow: 1px 0px 6px $secondary, 0px 0px 0px #fff, 0px 0px 10px $secondary;
+}
+
+.button-grid {
+  justify-content: center;
 }

@@ -38,7 +38,7 @@ export default function ChatBox() {
         setMessages(response.data.reverse());
         // Welcome message
     addLocalMessage(`Welcome to nekoha.moe :3`);
-    addLocalMessage(`"/nick username" to set a username.`);
+    addLocalMessage(`"/nick username" to set a username. (You don't need)`);
     addLocalMessage(`"/color #FFFFFF" to give your name a color.`);
       })
       .catch(error => {
@@ -145,7 +145,7 @@ export default function ChatBox() {
   };
 
   return (
-    <div className="card p-0 rounded-0 d-flex flex-column" style={{ height: '500px' }}>
+    <div className="card p-0 rounded-0 d-flex flex-column border-glow" style={{ height: '500px' }}>
       <div className="p-2 overflow-auto flex-grow-1" ref={containerRef}>
       {messages.map((msg, index) => (
         <div key={index} className="mb-1">

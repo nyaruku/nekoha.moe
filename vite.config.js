@@ -28,6 +28,11 @@ export default defineConfig({
         ws: true,  // Enable WebSocket proxy
         changeOrigin: true,
       },
+      '/api/live/cursor-ws': {
+        target: 'http://localhost:5002', // Ensure the target URL matches the WebSocket namespace
+        ws: true,  // Enable WebSocket proxy
+        changeOrigin: true,
+      },
     },
   }
 })
