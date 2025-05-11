@@ -95,14 +95,55 @@ function Index() {
           </div>
         </div>
         <CursorSync />
+        
         <div className="row">
           <div className="col-12 col-md-8 d-flex flex-column">
             <div className="mb-3 flex-grow-1">
               <ChatBox />
+              <div className="mt-5 border-glow card mb-3">
+                <div class="card-header">Project</div>
+                <div className="card-body">
+                  <h5 className="card-title">osu! Chat Logger</h5>
+                  <p>An IRC Chat Logger that logs all channels and messages from the game osu!</p>
+                  <a href="/log" target="_blank" class="btn btn-info me-3">osu! Chat Logs</a>
+                  <a href="https://github.https://github.com/nyaruku/nekoha.moe-server/blob/main/logger.cjs" target="_blank" class="btn btn-info">Source Code</a>
+                </div>
+              </div>
+              <div className="border-glow card mb-3">
+                <div class="card-header">Project</div>
+                <div className="card-body">
+                  <h5 className="card-title">osuTo2007</h5>
+                  <p>A .osu file converter to make any map playable in any osu! version</p>
+                  <a href="https://github.com/nyaruku/osuTo2007" target="_blank" class="btn btn-info">GitHub Project</a>
+                </div>
+              </div>
+              <div className="border-glow card mb-3">
+                <div class="card-header">Project</div>
+                <div className="card-body">
+                  <h5 className="card-title">osu! Tracker</h5>
+                  <p>A wip project to track osu! Stats and Sessions</p>
+                  <a href="https://github.com/nyaruku/osu-tracker" target="_blank" class="btn btn-info">GitHub Project</a>
+                </div>
+              </div>
+              <div className="border-glow card mb-3">
+                <div class="card-header">Project</div>
+                <div className="card-body">
+                  <h5 className="card-title">leeway-cpp</h5>
+                  <p>A C++ rewrite of a C# project to get max osu! map score and spinner score/leeway</p>
+                  <a href="https://github.com/nyaruku/leeway-cpp" target="_blank" class="btn btn-info">GitHub Project</a>
+                </div>
+              </div>
+              <div className="border-glow card mb-3">
+                <div class="card-header">Project</div>
+                <div className="card-body">
+                  <h5 className="card-title">IrcClient4osu</h5>
+                  <p>An abandoned project to make a C++ IRC Client</p>
+                  <a href="https://github.com/nyaruku/IrcClient4osu" target="_blank" class="btn btn-info">GitHub Project</a>
+                </div>
+              </div>
             </div>
           </div>
           <div className="col-12 col-md-4 d-flex flex-column">
-
             <div className="border-glow card mb-3">
               <div className="card-body">
                 <h5 className="card-title">Info</h5>
@@ -111,7 +152,6 @@ function Index() {
                 <p className="mb-0">Visits: <span className="text-secondary">{visitCount}</span></p>
               </div>
             </div>
-
             <div className="border-glow card mb-3">
               <div className="card-body">
                 <h5 className="card-title">Socials</h5>
