@@ -37,9 +37,9 @@ export default function ChatBox() {
       .then(response => {
         setMessages(response.data.reverse());
         // Welcome message
-    addLocalMessage(`Welcome to nekoha.moe :3`);
-    addLocalMessage(`"/nick username" to set a username. (You don't need)`);
-    addLocalMessage(`"/color #FFFFFF" to give your name a color.`);
+    addLocalMessage(`Welcome to nekoha.moe :3`, '#888888');
+    addLocalMessage(`"/nick username" to set a username. (You don't need)`, '#888888');
+    addLocalMessage(`"/color #FFFFFF" to give your name a color.`, '#888888');
       })
       .catch(error => {
         console.error('Error fetching past messages:', error);
@@ -74,14 +74,14 @@ export default function ChatBox() {
     });
   }, [messages]);
 
-  const addLocalMessage = (text) => {
+  const addLocalMessage = (text, color) => {
     setMessages(prev => [
       ...prev,
       {
         timestamp: Date.now(),
         username: '[Local]',
         message: text,
-        color: '#888888',
+        color: color,
         local: true,
       },
     ]);
@@ -93,28 +93,28 @@ export default function ChatBox() {
 
     switch (cmd) {
       case '/help':
-        addLocalMessage('Available commands: /help, /nick [name], /color [#hex]');
+        addLocalMessage('Available commands: /help, /nick [name], /color [#hex]', '#888888');
         return true;
       case '/nick':
         if (arg) {
           setUsername(arg);
           setCookie('username', arg);
-          addLocalMessage(`Username set to "${arg}"`);
+          addLocalMessage(`Username set to "${arg}"`, '#888888');
         } else {
-          addLocalMessage('Usage: /nick [name]');
+          addLocalMessage('Usage: /nick [name]', '#888888');
         }
         return true;
       case '/color':
         if (/^#[0-9A-Fa-f]{6}$/.test(arg)) {
           setColor(arg);
           setCookie('color', arg);
-          addLocalMessage(`Color set to "${arg}"`);
+          addLocalMessage(`Color set to "${arg}"`, '#888888');
         } else {
-          addLocalMessage('Invalid color. Use hex format like #FF00FF');
+          addLocalMessage('Invalid color. Use hex format like #FF00FF', '#888888');
         }
         return true;
       default:
-        addLocalMessage(`Unknown command: ${cmd}`);
+        addLocalMessage(`Unknown command: ${cmd}`, '#888888');
         return true;
     }
   };
