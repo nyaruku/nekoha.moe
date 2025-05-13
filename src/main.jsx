@@ -5,6 +5,7 @@ import Navbar from './navbar.jsx'
 import Index from './index.jsx'
 import Error from './error.jsx'
 import Log from './log.jsx'
+import Privacy from './privacy.jsx'
 import YTDLP from './ytdl.jsx'
 
 // Bootstrap
@@ -22,6 +23,7 @@ createRoot(document.getElementById('root')).render(
           <Route path="/log" element={<Log />} />
           {/*<Route path="/ytdlp" element={<YTDLP />} />*/}
           <Route path="*" element={<Error />} />
+          <Route path="/privacy" element={<Privacy />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,

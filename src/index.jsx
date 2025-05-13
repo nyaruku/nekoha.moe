@@ -234,6 +234,11 @@ function Index() {
             </div>
           </div>
         </div>
+        <div className="mt-5 border-glow card mb-3">
+          <div className="card-body">
+            <a href="/privacy" target="_blank" class="link-secondary">Privacy Policy</a>
+          </div>
+        </div>
       </div>
 
       {/* FPS Counter Component */}
