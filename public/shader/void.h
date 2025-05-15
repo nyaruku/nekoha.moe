@@ -18,5 +18,5 @@ void main() {
 			p.y + fi*sin(fi*p.x+phase)
 		);
 	}
-	gl_FragColor = vec4(1. - (sin(p.x*p.y)/8.+0.8));
+	gl_FragColor = vec4(0.85 - (sin(p.x*p.y)/8.+0.8));
 }

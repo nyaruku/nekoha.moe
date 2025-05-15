@@ -70,6 +70,7 @@ function Index() {
     body.setAttribute('data-shader', shader);
     body.setAttribute('data-shader-speed', speed);
     body.setAttribute('data-shader-quality', quality);
+    body.classList.add('bg-black');
     body.style.overflowY = 'scroll';
   }, []);
 
@@ -88,9 +89,9 @@ function Index() {
 
   const shaders = [
     { label: 'Snow', path: '/shader/snow.h', speed: '0.1' },
-    { label: 'Abstract', path: '/shader/abstract.h', speed: '1.0' },
+    { label: 'Abstract', path: '/shader/abstract.h', speed: '0.1' },
     { label: 'Void', path: '/shader/void.h', speed: '1.0' },
-    { label: 'Vector', path: '/shader/vector.h', speed: '1.0' },
+    { label: 'Vector', path: '/shader/vector.h', speed: '0.05' },
     { label: 'Cloud', path: '/shader/cloud.h', speed: '1.0' },
     { label: 'Singularity', path: '/shader/singularity.h', speed: '1.0' },
     { label: 'Fluid', path: '/shader/fluid.h', speed: '1.0' },

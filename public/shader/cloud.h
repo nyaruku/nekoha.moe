@@ -6,7 +6,10 @@ precision mediump float;
 
 uniform float time;
 uniform vec2 resolution;
-varying vec2 surfacePosition;
+vec2 getSurfacePosition() {
+    return gl_FragCoord.xy / resolution.xy * 2.0 - 1.0;
+}
+
 
 vec4 textureRND2D(vec2 uv){
 	uv = floor(fract(uv)*1e3);
@@ -32,10 +35,10 @@ float cloud(vec2 p) {
 }
 
 void main( void ) {
-	vec2 p = surfacePosition*.05+.5;
+	vec2 p = getSurfacePosition() * 0.05 + 0.5;
 	vec3 c = vec3(.1, .1, .1);
-	c.rgb += vec3(.1, .2, .2) * cloud(p*.3+time*.0002)*.8;
-	c.gbr += vec3(.1, .1, .1) * cloud(p*.2+time*.0002)*.8;
-	c.grb += vec3(.1, .1, .1) * cloud(p*.1+time*.0002)*1.;
-	gl_FragColor = vec4(c, .5);
+	c.rgb += vec3(.05, .05, .05) * cloud(p*.3+time*.0002)*.8;
+	c.gbr += vec3(.05, .05, .05) * cloud(p*.2+time*.0002)*.8;
+	c.grb += vec3(.05, .05, .05) * cloud(p*.1+time*.0002)*1.;
+	gl_FragColor = vec4(c, 0.00);
 }
