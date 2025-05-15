@@ -1,49 +1,35 @@
-#extension GL_OES_standard_derivatives : enable
-
 #ifdef GL_ES
-precision highp float;
+precision mediump float;
 #endif
 
-#define repeat(i, n) for(int i = 0; i < n; i++)
+#extension GL_OES_standard_derivatives : enable
 
 uniform float time;
-
 uniform vec2 resolution;
 
-void main(void)
+float snow(vec2 uv,float scale)
 {
-    vec2 uv = gl_FragCoord.xy / resolution.xy - 1.;
-    uv.y *= resolution.y / resolution.x;
-    float mul = resolution.x / resolution.y;
-    vec3 dir = vec3(uv * mul, 1.);
-    float a2 = time * 20. + .5;
-    float a1 = 1.0;
-    mat2 rot1 = mat2(cos(a1), sin(a1), - sin(a1), cos(a1));
-    mat2 rot2 = rot1;
-    dir.xz *= rot1;
-    dir.xy *= rot2;
-    vec3 from = vec3(0., 0., 0.);
-    from += vec3(.0025 * time, .03 * time, - 2.);
-    from.xz *= rot1;
-    from.xy *= rot2;
-    float s = .1, fade = .07;
-    vec3 v = vec3(0.4);
-    repeat(r, 10) {
-	vec3 p = from + s * dir * 1.5;
-	p = abs(vec3(0.750) - mod(p, vec3(0.750 * 2.)));
-	p.x += float(r * r) * 0.01;
-	p.y += float(r) * 0.02;
-	float pa, a = pa = 0.;
-	repeat(i, 12) {
-	    p = abs(p) / dot(p, p) - 0.340;
-	    a += abs(length(p) - pa * 0.2);
-	    pa = length(p);
-	}
-	a *= a * a * 2.;
-	v += vec3(s * s , s , s * s) * a * 0.0017 * fade;
-	fade *= 0.960;
-	s += 0.110;
-    }
-    v = mix(vec3(length(v)), v, 0.8);
-    gl_FragColor = vec4(v * 0.01, 1.);
+	float w=smoothstep(1.,0.,-uv.y*(scale/10.));if(w<.1)return 0.;
+	//uv+=time/scale;
+	//uv.y+=time*2./scale;
+	uv.x+=(time*2.0)/scale;
+	uv*=scale;vec2 s=floor(uv),f=fract(uv),p;float k=1.,d;
+	p=.10+.55*sin(111.*fract(sin((s+p+scale)*mat2(7,2,6,5))-1.))-f;d=length(p);k=min(d,k);
+	k=smoothstep(0.,k,sin(f.x+f.y)*0.01);
+    	return k*w;
+}
+
+void main(void){
+	vec2 uv=(gl_FragCoord.xy*2.-resolution.xy)/min(resolution.x,resolution.y); 
+	vec3 finalColor=vec3(0);
+	float c=smoothstep(0.1,0.0,clamp(uv.y*.1+.9,0.,1.75));
+	c+=snow(uv,30.)*.3;
+	c+=snow(uv,20.)*.5;
+	c+=snow(uv,15.)*.8;
+	c+=snow(uv,5.);
+	c+=snow(uv,5.);
+	c+=snow(uv,7.);
+	c+=snow(uv,2.);
+	finalColor=(vec3(c*1.0, c*1.0, c*1.0));
+	gl_FragColor = vec4(finalColor,1);
 }

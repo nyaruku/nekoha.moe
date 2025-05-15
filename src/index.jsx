@@ -89,12 +89,14 @@ function Index() {
   const shaders = [
     { label: 'Snow', path: '/shader/snow.h', speed: '0.1' },
     { label: 'Abstract', path: '/shader/abstract.h', speed: '1.0' },
-    { label: 'Mountain', path: '/shader/mountain.h', speed: '1.0' },
-    { label: 'Galaxy 1', path: '/shader/galaxy2.h', speed: '1.0' },
-    { label: 'Galaxy 2', path: '/shader/galaxy3.h', speed: '1.0' },
-    { label: 'Galaxy 3', path: '/shader/galaxy4.h', speed: '1.0' },
-    { label: 'Galaxy 4', path: '/shader/galaxy5.h', speed: '1.0' },
-    { label: 'Galaxy 5', path: '/shader/galaxy6.h', speed: '1.0' }
+    { label: 'Void', path: '/shader/void.h', speed: '1.0' },
+    { label: 'Vector', path: '/shader/vector.h', speed: '1.0' },
+    { label: 'Cloud', path: '/shader/cloud.h', speed: '1.0' },
+    { label: 'Singularity', path: '/shader/singularity.h', speed: '1.0' },
+    { label: 'Fluid', path: '/shader/fluid.h', speed: '1.0' },
+    { label: 'Galaxy 1', path: '/shader/galaxy1.h', speed: '1.0' },
+    { label: 'Galaxy 2', path: '/shader/galaxy2.h', speed: '1.0' },
+    { label: 'Galaxy 3', path: '/shader/galaxy3.h', speed: '1.0' },
   ];
   
   return (
