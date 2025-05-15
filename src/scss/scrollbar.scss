@@ -1,35 +1,19 @@
 /* Chrome, Edge, Safari */
 ::-webkit-scrollbar {
-    width: 20px;
+    width: 8px;
 }
 
 ::-webkit-scrollbar-track {
     background: #101010;
-    border-radius: 0;
     box-shadow: none;
 }
 
 ::-webkit-scrollbar-thumb {
     background: white;
-    border-radius: 0 !important;
     box-shadow: none;
     border: none;
 }
 
 ::-webkit-scrollbar-thumb:hover {
     background: gray;
-}
-
-/* Firefox */
-* {
-    scrollbar-width: thin; /* or auto */
-    scrollbar-color: white #101010;
-    scrollbar-gutter: stable;
-}
-
-/* IE & Legacy Edge */
-body {
-    scrollbar-face-color: white;
-    scrollbar-track-color: #101010;
-    scrollbar-arrow-color: gray;
 }
