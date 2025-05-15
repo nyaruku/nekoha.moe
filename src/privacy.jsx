@@ -7,16 +7,23 @@ import axios from 'axios';
 function Privacy() {
 
   useEffect(() => {
-    // Apply shader attributes to the <body> only on this page
-    const body = document.body;
-    body.setAttribute('data-shader', '/shader/shader.h');
-    body.setAttribute('data-shader-speed', '0.1');
-    body.setAttribute('data-shader-quality', '1.0');
-    body.style = "overflow-y: scroll;";
-
-    return () => {
-    };
-  }, []);
+      const cookies = Object.fromEntries(
+        document.cookie
+          .split('; ')
+          .map((c) => c.split('=').map(decodeURIComponent))
+      );
+  
+      const shader = cookies.shader || '/shader/snow.h';
+      const speed = cookies.shaderSpeed || '0.1';
+      const quality = cookies.shaderQuality || '1.0';
+  
+      const body = document.body;
+      body.setAttribute('data-shader', shader);
+      body.setAttribute('data-shader-speed', speed);
+      body.setAttribute('data-shader-quality', quality);
+      body.classList.add('bg-black');
+      body.style.overflowY = 'scroll';
+    }, []);
   
   return (
     <>
