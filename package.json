@@ -18,6 +18,7 @@
     "bootstrap": "^5.3.3",
     "cors": "^2.8.5",
     "date-fns": "^4.1.0",
+    "dayjs": "^1.11.13",
     "discord.js": "^14.18.0",
     "dompurify": "^3.2.4",
     "dotenv": "^16.4.7",

@@ -41,3 +41,9 @@ $input-placeholder-color: rgba(255, 255, 255, 0.5); // Light placeholder
 .btn-info {
     color: #fff !important;
 }
+
+.hover-bg-override {
+    :hover {
+        background-color: bg-dark !important;
+    }
+}

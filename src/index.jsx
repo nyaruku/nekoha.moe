@@ -6,6 +6,7 @@ import FpsCounter from './components/fps.jsx';  // Import the FPS counter compon
 import CursorSync from './components/cursorSync.jsx';  // Import the CursorSync component
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import dayjs from 'dayjs';
 // BUTTONS
 import img_2hu from './images/buttons/2hu.gif';
 import img_1080p from './images/buttons/1080p.gif';
@@ -55,16 +56,46 @@ function Index() {
   }, []);
 
   useEffect(() => {
-    // Apply shader attributes to the <body> only on this page
-    const body = document.body;
-    body.setAttribute('data-shader', '/shader/shader.h');
-    body.setAttribute('data-shader-speed', '0.1');
-    body.setAttribute('data-shader-quality', '1.0');
-    body.style = "overflow-y: scroll;";
+    const cookies = Object.fromEntries(
+      document.cookie
+        .split('; ')
+        .map((c) => c.split('=').map(decodeURIComponent))
+    );
 
-    return () => {
-    };
+    const shader = cookies.shader || '/shader/snow.h';
+    const speed = cookies.shaderSpeed || '0.1';
+    const quality = cookies.shaderQuality || '1.0';
+
+    const body = document.body;
+    body.setAttribute('data-shader', shader);
+    body.setAttribute('data-shader-speed', speed);
+    body.setAttribute('data-shader-quality', quality);
+    body.style.overflowY = 'scroll';
   }, []);
+
+  // React-safe shader switcher
+  const handleShaderChange = (shader, speed, quality = '1.0') => {
+    const body = document.body;
+    body.setAttribute('data-shader', shader);
+    body.setAttribute('data-shader-speed', speed);
+    body.setAttribute('data-shader-quality', quality);
+    body.style.overflowY = 'scroll';
+
+    document.cookie = `shader=${encodeURIComponent(shader)}; path=/; max-age=${60 * 60 * 24 * 30}`;
+    document.cookie = `shaderSpeed=${speed}; path=/; max-age=${60 * 60 * 24 * 30}`;
+    document.cookie = `shaderQuality=${quality}; path=/; max-age=${60 * 60 * 24 * 30}`;
+  };
+
+  const shaders = [
+    { label: 'Snow', path: '/shader/snow.h', speed: '0.1' },
+    { label: 'Abstract', path: '/shader/abstract.h', speed: '1.0' },
+    { label: 'Mountain', path: '/shader/mountain.h', speed: '1.0' },
+    { label: 'Galaxy 1', path: '/shader/galaxy2.h', speed: '1.0' },
+    { label: 'Galaxy 2', path: '/shader/galaxy3.h', speed: '1.0' },
+    { label: 'Galaxy 3', path: '/shader/galaxy4.h', speed: '1.0' },
+    { label: 'Galaxy 4', path: '/shader/galaxy5.h', speed: '1.0' },
+    { label: 'Galaxy 5', path: '/shader/galaxy6.h', speed: '1.0' }
+  ];
   
   return (
     <>
@@ -128,6 +159,32 @@ function Index() {
             </div>
           </div>
           <div className="col-12 col-md-4 d-flex flex-column">
+            <div className="card rounded-0 mb-3">
+              <div className="card-body">
+                <h5 className="card-title">Settings</h5>
+                <div class="dropdown" data-bs-theme="dark">
+                  <button class="btn btn-sm btn-dark dropdown-toggle rounded-0" type="button" data-bs-toggle="dropdown">
+                    Select Background
+                  </button>
+                  <ul className="dropdown-menu bg-primary rounded-0">
+                    {shaders.map((shader) => (
+                      <li key={shader.path}>
+                        <a
+                          className="dropdown-item hover-bg-override"
+                          href="#"
+                          onClick={(e) => {
+                            e.preventDefault();
+                            handleShaderChange(shader.path, shader.speed);
+                          }}
+                        >
+                          {shader.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </div>
+            </div>
             <div className="card rounded-0 mb-3">
               <div className="card-body">
                 <h5 className="card-title">Info</h5>
@@ -224,7 +281,7 @@ function Index() {
             <div class="row align-items-center mb-2">
               <a href="/privacy" target="_blank" class="default-link col-12">Privacy Policy</a>
             </div>
-            <span>Compiled on: {new Date(__BUILD_DATE__).toLocaleString()}</span>        
+            <span>Compiled on: {dayjs(__BUILD_DATE__).format('DD.MM.YYYY HH:mm:ss')}</span>
           </div>
         </div>
       </div>
