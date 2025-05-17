@@ -1,6 +1,7 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import Navbar from './navbar.jsx'
 import Index from './index.jsx'
 import Error from './error.jsx'

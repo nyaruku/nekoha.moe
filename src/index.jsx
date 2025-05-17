@@ -4,7 +4,7 @@ import shadify from './javascript/shadify.js';
 import ChatBox from './components/chatBox.jsx';  // Make sure this path matches where you put ChatBox.jsx
 import FpsCounter from './components/fps.jsx';  // Import the FPS counter component
 import CursorSync from './components/cursorSync.jsx';  // Import the CursorSync component
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import dayjs from 'dayjs';
 // BUTTONS
@@ -55,6 +55,47 @@ function Index() {
       .catch(err => console.error('Visit counter error:', err));
   }, []);
 
+useEffect(() => {
+  const audio = audioRef.current;
+  if (!audio) return;
+
+  // Attach event listeners for loading state
+  const handleCanPlay = () => setIsLoading(false);
+  const handleWaiting = () => setIsLoading(true);
+
+  audio.addEventListener('canplay', handleCanPlay);
+  audio.addEventListener('waiting', handleWaiting);
+
+  // Try autoplay on load
+  const cookies = Object.fromEntries(
+    document.cookie
+      .split('; ')
+      .map((c) => c.split('=').map(decodeURIComponent))
+  );
+  const savedVolume = parseInt(cookies.volume || '10', 10);
+
+  setVolume(savedVolume);
+  audio.volume = savedVolume / 100;
+
+  audio.play()
+    .then(() => {
+      setIsPlaying(true);
+      setIsLoading(false);
+    })
+    .catch((err) => {
+      console.warn('Autoplay blocked:', err);
+      // Autoplay blocked, so mark loading as false and let user manually play
+      setIsPlaying(false);
+      setIsLoading(false);
+    });
+
+  // Cleanup listeners on unmount
+  return () => {
+    audio.removeEventListener('canplay', handleCanPlay);
+    audio.removeEventListener('waiting', handleWaiting);
+  };
+}, []);
+
   useEffect(() => {
     const cookies = Object.fromEntries(
       document.cookie
@@ -72,6 +113,17 @@ function Index() {
     body.setAttribute('data-shader-quality', quality);
     body.classList.add('bg-black');
     body.style.overflowY = 'scroll';
+
+    // Volume setup + autoplay
+    const savedVolume = parseInt(cookies.volume || '10', 10);
+    setVolume(savedVolume);
+    if (audioRef.current) {
+      audioRef.current.volume = savedVolume / 100;
+      audioRef.current
+        .play()
+        .then(() => setIsPlaying(true))
+        .catch((err) => console.warn('Autoplay blocked:', err));
+    }
   }, []);
 
   // React-safe shader switcher
@@ -100,6 +152,39 @@ function Index() {
     { label: 'Galaxy 3', path: '/shader/galaxy3.h', speed: '1.0' },
   ];
   
+
+  const audioRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isMuted, setIsMuted] = useState(false);
+  const [volume, setVolume] = useState(10);
+
+  const togglePlay = () => {
+    const audio = audioRef.current;
+    if (audio.paused) {
+      audio.play();
+      setIsPlaying(true);
+    } else {
+      audio.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  const toggleMute = () => {
+    const audio = audioRef.current;
+    audio.muted = !audio.muted;
+    setIsMuted(audio.muted);
+  };
+
+  const handleVolumeChange = (e) => {
+    const newVolume = parseInt(e.target.value, 10);
+    setVolume(newVolume);
+    if (audioRef.current) {
+      audioRef.current.volume = newVolume / 100;
+    }
+    document.cookie = `volume=${newVolume}; path=/; max-age=${60 * 60 * 24 * 30}`;
+  };
+
   return (
     <>
       <Helmet>
@@ -165,7 +250,7 @@ function Index() {
             <div className="card rounded-0 mb-3">
               <div className="card-body">
                 <h5 className="card-title">Settings</h5>
-                <div class="dropdown" data-bs-theme="dark">
+                <div class="dropdown mb-3" data-bs-theme="dark">
                   <button class="btn btn-sm btn-dark dropdown-toggle rounded-0" type="button" data-bs-toggle="dropdown">
                     Select Background
                   </button>
@@ -186,6 +271,20 @@ function Index() {
                     ))}
                   </ul>
                 </div>
+                <audio ref={audioRef} src="https://icecast.nekoha.moe/stream.mp3" preload="none"/>
+                
+              <div className="mx-auto" style={{ maxWidth: "100%" }}>
+                <label htmlFor="volumeControl" className="form-label mb-0">
+                  Volume ({volume}%)
+                </label>
+                {isLoading && <span className="text-muted small ms-2">Loading...</span>}
+                
+                <div className="d-flex align-items-center mt-2">
+                  <i className={`fas me-3 fa-${isPlaying ? "pause" : "play"}`} role="button" onClick={togglePlay}></i>
+                  <i className={`fas me-3 fa-volume-${isMuted ? "mute" : "up"}`} role="button" onClick={toggleMute}></i>
+                  <input type="range" className="form-range flex-grow-1" id="volumeControl" min="0" max="100" value={volume} onChange={handleVolumeChange}/>
+                </div>
+              </div>              
               </div>
             </div>
             <div className="card rounded-0 mb-3">
@@ -283,6 +382,7 @@ function Index() {
           <div className="card-body text-center">
             <div class="row align-items-center mb-2">
               <a href="/privacy" target="_blank" class="default-link col-12">Privacy Policy</a>
+              <a href="https://icecast.nekoha.moe" target="_blank" class="default-link col-12">Icecast2 Dashboard</a>
             </div>
             <span>Compiled on: {dayjs(__BUILD_DATE__).format('DD.MM.YYYY HH:mm:ss')}</span>
           </div>
