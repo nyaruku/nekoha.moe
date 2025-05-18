@@ -103,7 +103,7 @@ useEffect(() => {
         .map((c) => c.split('=').map(decodeURIComponent))
     );
 
-    const shader = cookies.shader || '/shader/snow.h';
+    const shader = cookies.shader || '/shader/void.h';
     const speed = cookies.shaderSpeed || '0.1';
     const quality = cookies.shaderQuality || '1.0';
 
@@ -204,9 +204,10 @@ useEffect(() => {
                   here are some infos about me:
                 </p>
                 <ul>
-                  <li>Age: 20 (18.08.2004)</li>
-                  <li>Country: Germany</li>
-                  <li>Fav Programming Language: C++</li>
+                  <li>Age: <span className="text-secondary">20</span></li>
+                  <li>Country: <span className="text-secondary">Germany</span></li>
+                  <li>Fav Programming Language: <span className="text-secondary">C++</span></li>
+                  <li>Pronouns <span className="text-secondary">She/They</span></li>
                   <li>Socially shy and awkward</li>
                 </ul>
               </div>
