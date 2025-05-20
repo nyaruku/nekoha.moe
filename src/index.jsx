@@ -49,6 +49,8 @@ import img_webpassion from './images/buttons/webpassion.gif';
 // BUTTONS
 function Index() {
   const [visitCount, setVisitCount] = useState(null);
+  const [selectedShaderLabel, setSelectedShaderLabel] = useState('Select Background');
+
   useEffect(() => {
     axios.get('/api/visit')
     .then(res => setVisitCount(res.data.count))
@@ -103,7 +105,7 @@ useEffect(() => {
         .map((c) => c.split('=').map(decodeURIComponent))
     );
 
-    const shader = cookies.shader || '/shader/void.h';
+    const shader = cookies.shader !== undefined ? cookies.shader : '';
     const speed = cookies.shaderSpeed || '0.1';
     const quality = cookies.shaderQuality || '1.0';
 
@@ -111,8 +113,17 @@ useEffect(() => {
     body.setAttribute('data-shader', shader);
     body.setAttribute('data-shader-speed', speed);
     body.setAttribute('data-shader-quality', quality);
-    body.classList.add('bg-black');
     body.style.overflowY = 'scroll';
+
+    if (shader) {
+      body.classList.add('bg-black');
+    } else {
+      body.classList.remove('bg-black');
+    }
+
+    const matched = shaders.find((s) => s.path === shader);
+    setSelectedShaderLabel(matched?.label || 'None');
+
 
     // Volume setup + autoplay
     const savedVolume = parseInt(cookies.volume || '10', 10);
@@ -127,19 +138,28 @@ useEffect(() => {
   }, []);
 
   // React-safe shader switcher
-  const handleShaderChange = (shader, speed, quality = '1.0') => {
+  const handleShaderChange = (shader, speed, quality = '1.0', label = 'Select Background') => {
     const body = document.body;
     body.setAttribute('data-shader', shader);
     body.setAttribute('data-shader-speed', speed);
     body.setAttribute('data-shader-quality', quality);
     body.style.overflowY = 'scroll';
 
+    if (shader) {
+      body.classList.add('bg-black');
+    } else {
+      body.classList.remove('bg-black');
+    }
+
     document.cookie = `shader=${encodeURIComponent(shader)}; path=/; max-age=${60 * 60 * 24 * 30}`;
     document.cookie = `shaderSpeed=${speed}; path=/; max-age=${60 * 60 * 24 * 30}`;
     document.cookie = `shaderQuality=${quality}; path=/; max-age=${60 * 60 * 24 * 30}`;
+
+    setSelectedShaderLabel(label);
   };
 
   const shaders = [
+    { label: 'None', path: '', speed: '0' },
     { label: 'Snow', path: '/shader/snow.h', speed: '0.1' },
     { label: 'Abstract', path: '/shader/abstract.h', speed: '0.1' },
     { label: 'Void', path: '/shader/void.h', speed: '1.0' },
@@ -192,7 +212,7 @@ useEffect(() => {
       </Helmet>
       <div className="container py-4 px-3 mx-auto">
         <div className="row mt-4">
-          <div className="col-12 col-md-3 align-self-start">
+          <div className="col-12 col-md-3 align-self-center">
             <img src={nekohaImage} className="mx-auto d-block img-fluid" alt="nekoha" />
           </div>
           <div className="col-12 col-md-9 align-self-center">
@@ -251,9 +271,10 @@ useEffect(() => {
             <div className="card rounded-0 mb-3">
               <div className="card-body">
                 <h5 className="card-title">Settings</h5>
+                <p class="mb-0">Background</p>
                 <div class="dropdown mb-3" data-bs-theme="dark">
                   <button class="btn btn-sm btn-dark dropdown-toggle rounded-0" type="button" data-bs-toggle="dropdown">
-                    Select Background
+                    {selectedShaderLabel}
                   </button>
                   <ul className="dropdown-menu bg-primary rounded-0">
                     {shaders.map((shader) => (
@@ -263,7 +284,7 @@ useEffect(() => {
                           href="#"
                           onClick={(e) => {
                             e.preventDefault();
-                            handleShaderChange(shader.path, shader.speed);
+                            handleShaderChange(shader.path, shader.speed, '1.0', shader.label);
                           }}
                         >
                           {shader.label}
@@ -294,32 +315,20 @@ useEffect(() => {
                 <p className="mb-0">Users online: <span className="text-secondary" id="userCount"></span></p>
                 <p className="mb-0">Server uptime: <span className="text-secondary" id="serverUptime"></span></p>
                 <p className="mb-0">Visits: <span className="text-secondary">{visitCount}</span></p>
+                <p className="mb-0">Server cost: <span className="text-secondary">7,50€</span> / Month</p>
+                <p className="mb-0">Domain cost: <span className="text-secondary">15,33€</span> / Year</p>
               </div>
             </div>
             <div className="rounded-0 card mb-3">
               <div className="card-body">
-                <h5 className="card-title">Socials</h5>
-                <ul>
-                  <li>Discord: railgun_osu</li>
-                  <li>
-                    <a href="https://discord.gg/FN6vauFTGA" target="_blank" className="default-link">My Discord Server</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/nyaruku" target="_blank" className="default-link">GitHub</a>
-                  </li>
-                  <li>
-                    <a href="https://github.com/nyaruku/nekoha.moe" target="_blank" className="default-link">GitHub Repo</a>
-                  </li>
-                  <li>
-                    <a href="https://osu.ppy.sh/users/13817114" target="_blank" className="default-link">My osu! Profile</a>
-                  </li>
-                  <li>
-                    <a href="https://twitter.com/railgun_osu" target="_blank" className="default-link">Twitter</a>
-                  </li>
-                  <li>
+                <h5 className="card-title">My Stuff</h5>
+                    <a href="https://ko-fi.com/railgun_osu" target="_blank" className="extra-link">Doante through Ko-fi :3</a><br/>
+                    <a href="https://discord.gg/FN6vauFTGA" target="_blank" className="default-link">My Discord Server</a><br/>
+                    <a href="https://github.com/nyaruku" target="_blank" className="default-link">GitHub</a><br/>
+                    <a href="https://github.com/nyaruku/nekoha.moe" target="_blank" className="default-link">GitHub Repo</a><br/>
+                    <a href="https://osu.ppy.sh/users/13817114" target="_blank" className="default-link">My osu! Profile</a><br/>
+                    <a href="https://twitter.com/railgun_osu" target="_blank" className="default-link">Twitter</a><br/>
                     <a href="https://steamcommunity.com/id/_Railgun_/" target="_blank" className="default-link">Steam</a>
-                  </li>
-                </ul>
               </div>
             </div>
             <div className="card rounded-0 mb-3">

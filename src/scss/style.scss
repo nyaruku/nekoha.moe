@@ -1,3 +1,7 @@
+// Example usage with a cyan glow
+@include fog-glow-keyframes(fog_secondary, $secondary);
+@include fog-glow-keyframes(fog_extra, $extra);
+
 a.default-link {
   text-decoration: none;
   color: $secondary;
@@ -5,50 +9,18 @@ a.default-link {
 
   &:hover {
     color: white;
-    animation: fogGlowDrift 6s ease-in-out infinite;
+    animation: fog_secondary 6s ease-in-out infinite;
   }
 }
 
-@keyframes fogGlowDrift {
-  0% {
-    text-shadow:
-      rgba(0, 206, 255, 0.6) -10px 0px 6px,
-      white 0px 0px 1px,
-      rgba(0, 206, 255, 0.8) 10px 0px 21px,
-      rgba(0, 206, 255, 0.5) 0px 5px 6px,
-      rgba(0, 206, 255, 0.5) 0px -5px 6px;
-  }
-  25% {
-    text-shadow:
-      rgba(0, 206, 255, 0.4) -7px 7px 6px,
-      white 0px 0px 1px,
-      rgba(0, 206, 255, 0.7) 7px -7px 21px,
-      rgba(0, 206, 255, 0.3) 4px 4px 6px,
-      rgba(0, 206, 255, 0.3) -4px -4px 6px;
-  }
-  50% {
-    text-shadow:
-      rgba(0, 206, 255, 0.2) 0px 10px 6px,
-      white 0px 0px 1px,
-      rgba(0, 206, 255, 0.5) 0px -10px 21px,
-      rgba(0, 206, 255, 0.2) 5px 0px 6px,
-      rgba(0, 206, 255, 0.2) -5px 0px 6px;
-  }
-  75% {
-    text-shadow:
-      rgba(0, 206, 255, 0.4) 7px 7px 6px,
-      white 0px 0px 1px,
-      rgba(0, 206, 255, 0.7) -7px -7px 21px,
-      rgba(0, 206, 255, 0.3) 4px -4px 6px,
-      rgba(0, 206, 255, 0.3) -4px 4px 6px;
-  }
-  100% {
-    text-shadow:
-      rgba(0, 206, 255, 0.6) -10px 0px 6px,
-      white 0px 0px 1px,
-      rgba(0, 206, 255, 0.8) 10px 0px 21px,
-      rgba(0, 206, 255, 0.5) 0px 5px 6px,
-      rgba(0, 206, 255, 0.5) 0px -5px 6px;
+a.extra-link {
+  text-decoration: none;
+  color: $extra;
+  position: relative;
+
+  &:hover {
+    color: white;
+    animation: fog_extra 6s ease-in-out infinite;
   }
 }
 
