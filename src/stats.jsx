@@ -46,6 +46,10 @@ function LogStats() {
       body.classList.add('bg-primary');
     }
     body.style.overflowY = 'scroll';
+
+    // init
+    fetchData(1);
+    fetchGlobalStats();
   }, []);
 
 
