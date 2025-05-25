@@ -4,7 +4,8 @@ import shadify from './javascript/shadify.js';
 import ChatBox from './components/chatBox.jsx';  // Make sure this path matches where you put ChatBox.jsx
 import FpsCounter from './components/fps.jsx';  // Import the FPS counter component
 import CursorSync from './components/cursorSync.jsx';  // Import the CursorSync component
-import React, { useEffect, useState, useRef } from 'react';
+import Silly  from './components/silly.jsx';  // silly :3
+import React, { useEffect, useState, useRef, lazy, Suspense } from 'react';
 import axios from 'axios';
 import dayjs from 'dayjs';
 // BUTTONS
@@ -46,118 +47,12 @@ import img_gay from './images/buttons/gay.webp';
 import img_imissxp from './images/buttons/imissxp.webp';
 import img_withLove from './images/buttons/with_love.webp';
 import img_webpassion from './images/buttons/webpassion.gif';
+import img_nekohabtn from '../public/images/button-nekoha.gif';
 // BUTTONS
 function Index() {
-  const [visitCount, setVisitCount] = useState(null);
-  const [selectedShaderLabel, setSelectedShaderLabel] = useState('Select Background');
-
-  useEffect(() => {
-    axios.get('/api/visit')
-    .then(res => setVisitCount(res.data.count))
-      .catch(err => console.error('Visit counter error:', err));
-  }, []);
-
-useEffect(() => {
-  const audio = audioRef.current;
-  if (!audio) return;
-
-  // Attach event listeners for loading state
-  const handleCanPlay = () => setIsLoading(false);
-  const handleWaiting = () => setIsLoading(true);
-
-  audio.addEventListener('canplay', handleCanPlay);
-  audio.addEventListener('waiting', handleWaiting);
-
-  // Try autoplay on load
-  const cookies = Object.fromEntries(
-    document.cookie
-      .split('; ')
-      .map((c) => c.split('=').map(decodeURIComponent))
-  );
-  const savedVolume = parseInt(cookies.volume || '10', 10);
-
-  setVolume(savedVolume);
-  audio.volume = savedVolume / 100;
-
-  audio.play()
-    .then(() => {
-      setIsPlaying(true);
-      setIsLoading(false);
-    })
-    .catch((err) => {
-      console.warn('Autoplay blocked:', err);
-      // Autoplay blocked, so mark loading as false and let user manually play
-      setIsPlaying(false);
-      setIsLoading(false);
-    });
-
-  // Cleanup listeners on unmount
-  return () => {
-    audio.removeEventListener('canplay', handleCanPlay);
-    audio.removeEventListener('waiting', handleWaiting);
-  };
-}, []);
-
-  useEffect(() => {
-    const cookies = Object.fromEntries(
-      document.cookie
-        .split('; ')
-        .map((c) => c.split('=').map(decodeURIComponent))
-    );
-
-    const shader = cookies.shader !== undefined ? cookies.shader : '';
-    const speed = cookies.shaderSpeed || '0.1';
-    const quality = cookies.shaderQuality || '1.0';
-
-    const body = document.body;
-    body.setAttribute('data-shader', shader);
-    body.setAttribute('data-shader-speed', speed);
-    body.setAttribute('data-shader-quality', quality);
-    body.style.overflowY = 'scroll';
-
-    if (shader) {
-      body.classList.add('bg-black');
-    } else {
-      body.classList.remove('bg-black');
-    }
-
-    const matched = shaders.find((s) => s.path === shader);
-    setSelectedShaderLabel(matched?.label || 'None');
-
-
-    // Volume setup + autoplay
-    const savedVolume = parseInt(cookies.volume || '10', 10);
-    setVolume(savedVolume);
-    if (audioRef.current) {
-      audioRef.current.volume = savedVolume / 100;
-      audioRef.current
-        .play()
-        .then(() => setIsPlaying(true))
-        .catch((err) => console.warn('Autoplay blocked:', err));
-    }
-  }, []);
-
-  // React-safe shader switcher
-  const handleShaderChange = (shader, speed, quality = '1.0', label = 'Select Background') => {
-    const body = document.body;
-    body.setAttribute('data-shader', shader);
-    body.setAttribute('data-shader-speed', speed);
-    body.setAttribute('data-shader-quality', quality);
-    body.style.overflowY = 'scroll';
-
-    if (shader) {
-      body.classList.add('bg-black');
-    } else {
-      body.classList.remove('bg-black');
-    }
-
-    document.cookie = `shader=${encodeURIComponent(shader)}; path=/; max-age=${60 * 60 * 24 * 30}`;
-    document.cookie = `shaderSpeed=${speed}; path=/; max-age=${60 * 60 * 24 * 30}`;
-    document.cookie = `shaderQuality=${quality}; path=/; max-age=${60 * 60 * 24 * 30}`;
-
-    setSelectedShaderLabel(label);
-  };
-
+  // ##################
+  //      Shaders
+  // ##################
   const shaders = [
     { label: 'None', path: '', speed: '0' },
     { label: 'Snow', path: '/shader/snow.h', speed: '0.1' },
@@ -171,14 +66,41 @@ useEffect(() => {
     { label: 'Galaxy 2', path: '/shader/galaxy2.h', speed: '1.0' },
     { label: 'Galaxy 3', path: '/shader/galaxy3.h', speed: '1.0' },
   ];
-  
-
+  // States, constants
+  const [visitCount, setVisitCount] = useState(null);
+  const [selectedShaderLabel, setSelectedShaderLabel] = useState('Select Background');
   const audioRef = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const [volume, setVolume] = useState(10);
 
+  // ##################
+  // constant functions
+  // ##################
+
+  const applyShaderAttributes = (shader, speed, quality) => {
+    const body = document.body;
+    body.setAttribute('data-shader', shader);
+    body.setAttribute('data-shader-speed', speed);
+    body.setAttribute('data-shader-quality', quality);
+    body.style.overflowY = 'scroll';
+
+    if (shader) {
+      body.classList.add('bg-black');
+    } else {
+      body.classList.remove('bg-black');
+    }
+  };
+
+  const handleShaderChange = (shader, speed, quality = '1.0', label = 'Select Background') => {
+    applyShaderAttributes(shader, speed, quality);
+    setCookie('shader', shader);
+    setCookie('shaderSpeed', speed);
+    setCookie('shaderQuality', quality);
+    setSelectedShaderLabel(label);
+  };
+  
   const togglePlay = () => {
     const audio = audioRef.current;
     if (audio.paused) {
@@ -202,9 +124,81 @@ useEffect(() => {
     if (audioRef.current) {
       audioRef.current.volume = newVolume / 100;
     }
-    document.cookie = `volume=${newVolume}; path=/; max-age=${60 * 60 * 24 * 30}`;
+      setCookie('volume', newVolume);
   };
 
+  const getCookies = () =>
+  Object.fromEntries(
+    document.cookie
+      .split('; ')
+      .map((c) => c.split('=').map(decodeURIComponent))
+  );
+
+  const setCookie = (name, value) => {
+    document.cookie = `${name}=${encodeURIComponent(value)}; path=/; max-age=${60 * 60 * 24 * 30}`;
+  };
+
+
+  // ##################
+  //    useEffects
+  // ##################
+
+  useEffect(() => {
+    // Visit Counter
+    axios.get('/api/visit')
+    .then(res => setVisitCount(res.data.count))
+      .catch(err => console.error('Visit counter error:', err));
+
+    const cookies = getCookies();
+    const shader = cookies.shader !== undefined ? cookies.shader : '';
+    const speed = cookies.shaderSpeed || '0.1';
+    const quality = cookies.shaderQuality || '1.0';
+
+    applyShaderAttributes(shader, speed, quality);
+
+    const matched = shaders.find((s) => s.path === shader);
+    setSelectedShaderLabel(matched?.label || 'None');
+
+    // Volume setup + autoplay
+    const savedVolume = parseInt(cookies.volume || '10', 10);
+    setVolume(savedVolume);
+    const audio = audioRef.current;
+
+    if (!audio) return;
+    const handleCanPlay = () => setIsLoading(false);
+    const handleWaiting = () => setIsLoading(true);
+    audio.addEventListener('canplay', handleCanPlay);
+    audio.addEventListener('waiting', handleWaiting);
+    audio.volume = savedVolume / 100;    
+
+
+    const tryPlayAudio = () => {
+      audio.play()
+        .then(() => {
+          setIsPlaying(true);
+          setIsLoading(false);
+        })
+        .catch((err) => {
+          console.warn('Autoplay blocked:', err);
+          setIsPlaying(false);
+          setIsLoading(false);
+        });
+    };
+
+    // If already loaded (e.g. React mounted after load), play immediately
+    if (document.readyState === 'complete') {
+      tryPlayAudio();
+    } else {
+      // Wait for full page load
+      window.addEventListener('load', tryPlayAudio, { once: true });
+    }
+
+    return () => {
+      audio.removeEventListener('canplay', handleCanPlay);
+      audio.removeEventListener('waiting', handleWaiting);
+      window.removeEventListener('load', tryPlayAudio);
+    };
+  }, []);
   return (
     <>
       <Helmet>
@@ -235,12 +229,14 @@ useEffect(() => {
           </div>
         </div>
         <CursorSync />
-        
         <div className="row">
           <div className="col-12 col-md-8 d-flex flex-column">
             <div className="mb-3 flex-grow-1">
               <ChatBox />
-              <div className="mt-5 rounded-0 card mb-3">
+              <div className="bg-primary mt-3 mb-3">
+                <Silly />
+              </div>
+              <div className="rounded-0 card mb-3">
                 <div class="card-header">Projects</div>
               </div>
               <div className="rounded-0 card mb-3">
@@ -384,6 +380,7 @@ useEffect(() => {
                 <img src={img_imissxp} className="img-fluid me-1 mb-1" alt="nekoha" />
                 <img src={img_withLove} className="img-fluid me-1 mb-1" alt="nekoha" />
                 <img src={img_webpassion} className="img-fluid me-1 mb-1" alt="nekoha" />
+                <img src={img_nekohabtn} className="img-fluid me-1 mb-1" alt="nekoha" />
               </div>
             </div>
           </div>
@@ -398,9 +395,6 @@ useEffect(() => {
           </div>
         </div>
       </div>
-
-      {/* FPS Counter Component */}
-      <FpsCounter />
     </>
   );
 }
