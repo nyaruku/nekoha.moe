@@ -107,6 +107,7 @@ export default function Log() {
   const updatedFilters = { ...filters, [name]: value };
 
   // Disable unsupported filters when "all" is selected
+  /*
   if (name === "channel" && value === "all") {
     updatedFilters.user_id = "";
     updatedFilters.username = "";
@@ -114,6 +115,7 @@ export default function Log() {
     updatedFilters.start = "";
     updatedFilters.end = "";
   }
+  */
 
   setFilters(updatedFilters);
 
@@ -215,7 +217,7 @@ export default function Log() {
               <div className="col-12 mb-2">
                 <label className="form-label">Select Channel</label>
                 <select className="form-select" name="channel" value={filters.channel} onChange={handleChange}>
-                    <option value="all">"All Channels"</option>
+                    <option value="allm">"All Channels"</option>
                     <option value="osu">#osu</option>
                     <option value="german">#german</option>
                     <option value="announce">#announce</option>
@@ -263,30 +265,26 @@ export default function Log() {
                     <option value="vietnamese">#vietnamese</option>
                 </select>
               </div>
-
-              {filters.channel === "all" && (
-                <p className="text-danger fw-bold">Filtering is not supported,<br></br>when "All Channels" are selected.</p>
-              )}
-
+              
               <div className="col-12 mb-2">
                 <label className="form-label">User ID equals</label>
-                <input type="number" className="form-control light-icon-form" name="user_id" value={filters.user_id} onChange={handleChange} disabled={filters.channel === "all"}/>
+                <input type="number" className="form-control light-icon-form" name="user_id" value={filters.user_id} onChange={handleChange}/>
               </div>
               <div className="col-12 mb-2">
                 <label className="form-label">Username equals</label>
-                <input type="text" className="form-control" name="username" value={filters.username} onChange={handleChange} disabled={filters.channel === "all"}/>
+                <input type="text" className="form-control" name="username" value={filters.username} onChange={handleChange}/>
               </div>
               <div className="col-12 mb-2">
                 <label className="form-label">Message Contains String</label>
-                <input type="text" className="form-control" name="message" value={filters.message} onChange={handleChange} disabled={filters.channel === "all"}/>
+                <input type="text" className="form-control" name="message" value={filters.message} onChange={handleChange}/>
               </div>
               <div className="col-12 mb-2">
                 <label className="form-label">Start Time</label>
-                <input type="datetime-local" className="form-control light-icon-form" id="cStart" name="start" value={filters.start} onChange={handleChange} disabled={filters.channel === "all"}/>
+                <input type="datetime-local" className="form-control light-icon-form" id="cStart" name="start" value={filters.start} onChange={handleChange}/>
               </div>
               <div className="col-12 mb-2">
                 <label className="form-label">End Time</label>
-                <input type="datetime-local" className="form-control light-icon-form" id="cEnd" name="end" value={filters.end} onChange={handleChange} disabled={filters.channel === "all"}/>
+                <input type="datetime-local" className="form-control light-icon-form" id="cEnd" name="end" value={filters.end} onChange={handleChange}/>
               </div>
               <div className="col-12 mb-2">
                 <label className="form-label">Limit (0 for full data)</label>
@@ -304,9 +302,7 @@ export default function Log() {
               </div>
             </form>
             <div className="col-12 mb-2">
-              {filters.channel != "all" && (
                 <a href={`https://nekoha.moe/api/log/download?channel=` + filters.channel} class="btn btn-info col-12">Download #{filters.channel} Chat</a>
-              )}
             </div>
             <div className="col-12">
                 <a href="https://nekoha.moe/api/log/export" class="btn btn-info col-12">Download MySQL Dump</a>
