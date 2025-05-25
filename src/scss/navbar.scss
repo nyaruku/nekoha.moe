@@ -1,5 +1,5 @@
 a.navbar-brand {
-    text-shadow: $secondary -3px 0px 6px, #fff 0px 0px 1px, $secondary 6px 0px 20px;
+    animation: fog_secondary 6s ease-in-out infinite;
 }
 
 a.nav-link:hover {

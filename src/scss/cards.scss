@@ -6,5 +6,7 @@
 }
 
 .card-title {
-  text-shadow: $secondary -3px 0px 6px, #fff 0px 0px 1px, $secondary 6px 0px 20px;
+  // text-shadow: $secondary -3px 0px 6px, #fff 0px 0px 1px, $secondary 6px 0px 20px;
+  text-shadow: #fff 0px 0px 6px;
+  @extend .fw-light;
 }

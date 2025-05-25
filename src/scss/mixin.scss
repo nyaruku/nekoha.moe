@@ -3,7 +3,7 @@
 }
 
 @mixin fog-glow-keyframes($name, $base-color) {
-  @keyframes #{$name} {
+ @keyframes #{$name} {
     0% {
       text-shadow:
         rgba-with-alpha($base-color, 0.6) -10px 0px 6px,
@@ -12,7 +12,7 @@
         rgba-with-alpha($base-color, 0.5) 0px 5px 6px,
         rgba-with-alpha($base-color, 0.5) 0px -5px 6px;
     }
-    25% {
+    20% {
       text-shadow:
         rgba-with-alpha($base-color, 0.4) -7px 7px 6px,
         white 0px 0px 1px,
@@ -20,7 +20,7 @@
         rgba-with-alpha($base-color, 0.3) 4px 4px 6px,
         rgba-with-alpha($base-color, 0.3) -4px -4px 6px;
     }
-    50% {
+    40% {
       text-shadow:
         rgba-with-alpha($base-color, 0.2) 0px 10px 6px,
         white 0px 0px 1px,
@@ -28,13 +28,21 @@
         rgba-with-alpha($base-color, 0.2) 5px 0px 6px,
         rgba-with-alpha($base-color, 0.2) -5px 0px 6px;
     }
-    75% {
+    60% {
       text-shadow:
         rgba-with-alpha($base-color, 0.4) 7px 7px 6px,
         white 0px 0px 1px,
         rgba-with-alpha($base-color, 0.7) -7px -7px 21px,
         rgba-with-alpha($base-color, 0.3) 4px -4px 6px,
         rgba-with-alpha($base-color, 0.3) -4px 4px 6px;
+    }
+    80% {
+      text-shadow:
+        rgba-with-alpha($base-color, 0.6) 10px 0px 6px,
+        white 0px 0px 1px,
+        rgba-with-alpha($base-color, 0.8) -10px 0px 21px,
+        rgba-with-alpha($base-color, 0.5) 0px -5px 6px,
+        rgba-with-alpha($base-color, 0.5) 0px 5px 6px;
     }
     100% {
       text-shadow:
