@@ -71,7 +71,6 @@ function LogStats() {
       const res = await axios.get('/api/log/info', { params });
 
       setData(res.data.items); // assume backend returns { items: [...], total: N }
-      setUniqueUsersLogged(res.data.uniqueUsersLogged); // <-- add this
       setTotalPages(Math.ceil(res.data.total / pageSize));
       setPage(pageNum);
     } catch (err) {
@@ -86,6 +85,7 @@ function LogStats() {
   const fetchGlobalStats = async () => {
     try {
       const res = await axios.get('/api/log/stats');
+      setUniqueUsersLogged(res.data.uniqueUsers);
       setGlobalStats(res.data); // e.g. { total_messages: ..., total_users: ..., tables: [...] }
       setTableStats(res.data.tables || []);
       setTablePage(1); // reset page when data updates
@@ -209,7 +209,7 @@ function LogStats() {
               onChange={(e) => setChannel(e.target.value)}
             >
               {[
-                'osu', 'german', 'announce', 'arabic', 'balkan', 'bulgarian', 'cantonese',
+                'allm', 'osu', 'german', 'announce', 'arabic', 'balkan', 'bulgarian', 'cantonese',
                 'chinese', 'ctb', 'czechoslovak', 'dutch', 'english', 'estonian', 'filipino',
                 'finnish', 'french', 'greek', 'hebrew', 'help', 'hungarian', 'indonesian',
                 'italian', 'japanese', 'korean', 'latvian', 'lazer', 'lobby', 'malaysian',
@@ -217,7 +217,9 @@ function LogStats() {
                 'russian', 'skandinavian', 'spanish', 'taiko', 'taiwanese', 'thai',
                 'turkish', 'ukrainian', 'uzbek', 'videogames', 'vietnamese'
               ].map((ch) => (
-                <option key={ch} value={ch}>#{ch}</option>
+                <option key={ch} value={ch}>
+                  {ch === 'allm' ? 'all' : `#${ch}`}
+                </option>
               ))}
             </select>
           </div>
@@ -244,7 +246,7 @@ function LogStats() {
               />
             </div>
           </div>
-
+          <p class="bg-black text-secondary"><i>No time range set = no time filtering applied</i></p>
           <button onClick={handleSubmit} className="btn btn-dark rounded-0 mt-2 mb-5">Filter</button>
           {/* Global stats centered above tables */}
           {!loading && globalStats && (
@@ -321,7 +323,13 @@ function LogStats() {
                         .slice((tablePage - 1) * tablePageSize, tablePage * tablePageSize)
                         .map((entry) => (
                           <tr key={entry.table_name}>
-                            <td>{entry.tableName}</td>
+                            <td>
+                              <a href={`https://nekoha.moe/api/log/download?channel=${entry.tableName}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-decoration-none default-link">
+                                {entry.tableName === 'allm' ? 'all' : entry.tableName}
+                              </a></td>
                             <td>{entry.rowCount.toLocaleString('de-DE')}</td>
                             <td>{(entry.sizeMB / (1024 * 1024)).toFixed(2)} MB</td> 
                           </tr>
