@@ -233,8 +233,11 @@ function Index() {
           <div className="col-12 col-md-8 d-flex flex-column">
             <div className="mb-3 flex-grow-1">
               <ChatBox />
-              <div className="bg-primary mt-3 mb-3">
+              <div className="bg-secondary mt-3 mb-3">
                 <Silly />
+              </div>
+              <div className="rounded-0 card mb-3">
+                <div class="card-header"><span>query > worte</span></div>
               </div>
               <div className="rounded-0 card mb-3">
                 <div class="card-header">Projects</div>
