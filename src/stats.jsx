@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import ChartComp from "./components/chart.jsx";
 
 function LogStats() {
   // State for user messages table (first table)
@@ -22,6 +23,8 @@ function LogStats() {
   const [start, setStart] = useState('');
   const [end, setEnd] = useState('');
   const [error, setError] = useState('');
+  const [graphData, setGraphData] = useState([]);
+  const [topWords, setTopWords] = useState([]);
 
   // cookie + shader
   useEffect(() => {
@@ -51,6 +54,28 @@ function LogStats() {
     fetchData(1);
     fetchGlobalStats();
   }, []);
+
+  useEffect(() => {
+    fetchGraphData();
+  }, [channel, start, end]);
+
+  const fetchGraphData = async () => {
+    try {
+      const params = {
+        channel,
+        limit: 100,
+      };
+      if (start) params.start = new Date(start).getTime();
+      if (end) params.end = new Date(end).getTime();
+
+      const res = await axios.get('/api/log/stats-graph', { params });
+
+      setGraphData(res.data.users || []);
+      setTopWords(res.data.top_words || []);
+    } catch (err) {
+      console.error('Failed to fetch graph data:', err);
+    }
+  };
 
 
   // Fetch data with optional page number
@@ -98,6 +123,7 @@ function LogStats() {
   const handleSubmit = () => {
     fetchData(1);
     fetchGlobalStats();
+    fetchGraphData();
   };
 
   // Pagination controls
@@ -123,7 +149,6 @@ function LogStats() {
     for (let i = startPage; i <= endPage; i++) {
       pages.push(i);
     }
-
     return (
       <nav data-bs-theme="dark" aria-label="Page navigation" className="mt-3">
         <div style={{ maxWidth: '100%', overflowX: 'hidden' }}>
@@ -352,6 +377,19 @@ function LogStats() {
 
           {/* Error message */}
           {error && <p className="text-muted mt-3">{error}</p>}
+
+        </div>
+      </div>
+      <div class="mb-5">
+        <div className="ms-5 me-5">
+          <h5 className="text-center mb-0">Top 100 Users by Message Count in {channel === 'allm' ? 'all channels' : `#${channel}`}</h5>
+          <ChartComp data={graphData} />
+        </div>
+        <div className="ms-5 me-5 mt-5">
+          <h5 className="text-center mb-0">Most 100 Common Words in {channel === 'allm' ? 'all channels' : `#${channel}`}</h5>
+          <p className="text-center text-secondary mb-0">BanchoBot excluded</p>
+          <p className="text-center text-secondary mb-0">\x01ACTION excluded</p>
+          <ChartComp data={topWords} />
         </div>
       </div>
     </>

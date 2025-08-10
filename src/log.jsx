@@ -268,7 +268,8 @@ export default function Log() {
               
               <div className="col-12 mb-2">
                 <label className="form-label">User ID equals</label>
-                <input type="number" className="form-control light-icon-form" name="user_id" value={filters.user_id} onChange={handleChange}/>
+                <input type="text" className="form-control light-icon-form" name="user_id" value={filters.user_id} onChange={handleChange}/>
+                <div class="form-text">Can be multiple comma separated.</div>
               </div>
               <div className="col-12 mb-2">
                 <label className="form-label">Username equals</label>

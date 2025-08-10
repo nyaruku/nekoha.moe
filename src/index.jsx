@@ -70,10 +70,10 @@ function Index() {
   const [visitCount, setVisitCount] = useState(null);
   const [selectedShaderLabel, setSelectedShaderLabel] = useState('Select Background');
   const audioRef = useRef(null);
-  const [isLoading, setIsLoading] = useState(true);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
-  const [volume, setVolume] = useState(10);
+  // const [isLoading, setIsLoading] = useState(true);
+  // const [isPlaying, setIsPlaying] = useState(false);
+  // const [isMuted, setIsMuted] = useState(false);
+  // const [volume, setVolume] = useState(10);
 
   // ##################
   // constant functions
@@ -100,7 +100,8 @@ function Index() {
     setCookie('shaderQuality', quality);
     setSelectedShaderLabel(label);
   };
-  
+    /*
+
   const togglePlay = () => {
     const audio = audioRef.current;
     if (audio.paused) {
@@ -126,7 +127,7 @@ function Index() {
     }
       setCookie('volume', newVolume);
   };
-
+*/
   const getCookies = () =>
   Object.fromEntries(
     document.cookie
@@ -160,18 +161,19 @@ function Index() {
     setSelectedShaderLabel(matched?.label || 'None');
 
     // Volume setup + autoplay
-    const savedVolume = parseInt(cookies.volume || '10', 10);
-    setVolume(savedVolume);
-    const audio = audioRef.current;
+    // const savedVolume = parseInt(cookies.volume || '10', 10);
+    // setVolume(savedVolume);
+    // const audio = audioRef.current;
 
-    if (!audio) return;
-    const handleCanPlay = () => setIsLoading(false);
-    const handleWaiting = () => setIsLoading(true);
-    audio.addEventListener('canplay', handleCanPlay);
-    audio.addEventListener('waiting', handleWaiting);
-    audio.volume = savedVolume / 100;    
+    // if (!audio) return;
+    // const handleCanPlay = () => setIsLoading(false);
+    // const handleWaiting = () => setIsLoading(true);
+    // audio.addEventListener('canplay', handleCanPlay);
+    // audio.addEventListener('waiting', handleWaiting);
+    // audio.volume = savedVolume / 100;    
 
 
+    /* 
     const tryPlayAudio = () => {
       audio.play()
         .then(() => {
@@ -198,6 +200,7 @@ function Index() {
       audio.removeEventListener('waiting', handleWaiting);
       window.removeEventListener('load', tryPlayAudio);
     };
+    */
   }, []);
   return (
     <>
@@ -214,14 +217,14 @@ function Index() {
               <div className="card-body">
                 <h5 className="card-title">Hiii :3</h5>
                 <p className="card-text">
-                  Alright, uhm... I don't know what to really type here,<br />
+                  Alright, uhm.. I don't know what to really type here,<br />
                   here are some infos about me:
                 </p>
                 <ul>
                   <li>Age: <span className="text-secondary">20</span></li>
                   <li>Country: <span className="text-secondary">Germany</span></li>
                   <li>Fav Programming Language: <span className="text-secondary">C++</span></li>
-                  <li>Pronouns <span className="text-secondary">She/They</span></li>
+                  <li>Pronouns <span className="text-secondary">Any</span></li>
                   <li>Socially shy and awkward</li>
                 </ul>
               </div>
@@ -292,20 +295,21 @@ function Index() {
                     ))}
                   </ul>
                 </div>
-                <audio ref={audioRef} src="https://icecast.nekoha.moe/stream.mp3" preload="none"/>
-                
-              <div className="mx-auto" style={{ maxWidth: "100%" }}>
-                <label htmlFor="volumeControl" className="form-label mb-0">
-                  Volume ({volume}%)
-                </label>
-                {isLoading && <span className="text-muted small ms-2">Loading...</span>}
-                
-                <div className="d-flex align-items-center mt-2">
-                  <i className={`fas me-3 fa-${isPlaying ? "pause" : "play"}`} role="button" onClick={togglePlay}></i>
-                  <i className={`fas me-3 fa-volume-${isMuted ? "mute" : "up"}`} role="button" onClick={toggleMute}></i>
-                  <input type="range" className="form-range flex-grow-1" id="volumeControl" min="0" max="100" value={volume} onChange={handleVolumeChange}/>
-                </div>
-              </div>              
+                  {/*
+                    <audio ref={audioRef} src="https://icecast.nekoha.moe/stream.mp3" preload="none"/>  
+                    <div className="mx-auto" style={{ maxWidth: "100%" }}>
+                      <label htmlFor="volumeControl" className="form-label mb-0">
+                        Volume ({volume}%)
+                      </label>
+                      {isLoading && <span className="text-muted small ms-2">Loading...</span>}
+                      
+                      <div className="d-flex align-items-center mt-2">
+                        <i className={`fas me-3 fa-${isPlaying ? "pause" : "play"}`} role="button" onClick={togglePlay}></i>
+                        <i className={`fas me-3 fa-volume-${isMuted ? "mute" : "up"}`} role="button" onClick={toggleMute}></i>
+                        <input type="range" className="form-range flex-grow-1" id="volumeControl" min="0" max="100" value={volume} onChange={handleVolumeChange}/>
+                      </div>
+                    </div>     
+                */}         
               </div>
             </div>
             <div className="card rounded-0 mb-3">
@@ -326,7 +330,6 @@ function Index() {
                     <a href="https://github.com/nyaruku" target="_blank" className="default-link">GitHub</a><br/>
                     <a href="https://github.com/nyaruku/nekoha.moe" target="_blank" className="default-link">GitHub Repo</a><br/>
                     <a href="https://osu.ppy.sh/users/13817114" target="_blank" className="default-link">My osu! Profile</a><br/>
-                    <a href="https://twitter.com/railgun_osu" target="_blank" className="default-link">Twitter</a><br/>
                     <a href="https://steamcommunity.com/id/_Railgun_/" target="_blank" className="default-link">Steam</a>
               </div>
             </div>
