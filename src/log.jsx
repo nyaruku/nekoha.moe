@@ -17,7 +17,7 @@ export default function Log() {
     message: '',
     start: '',
     end: '',
-    limit: 50000, // Artificial Limit of 50K for people with low bandwidth ~ 3,5MiB
+    limit: 10000,
     sort: 'desc',
     offset: ''
   });
@@ -288,7 +288,7 @@ export default function Log() {
                 <input type="datetime-local" className="form-control light-icon-form" id="cEnd" name="end" value={filters.end} onChange={handleChange}/>
               </div>
               <div className="col-12 mb-2">
-                <label className="form-label">Limit (0 for full data)</label>
+                <label className="form-label">Limit (100-50000)</label>
                 <input type="number" className="form-control" name="limit" value={filters.limit} onChange={handleChange} />
               </div>
               <div className="col-12 mb-2">
