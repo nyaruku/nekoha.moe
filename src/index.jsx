@@ -326,7 +326,7 @@ function Index() {
               <div className="card-body">
                 <h5 className="card-title">My Stuff</h5>
                     <a href="https://ko-fi.com/railgun_osu" target="_blank" className="extra-link">Donate through Ko-fi :3</a><br/>
-                    <a href="https://discord.gg/FN6vauFTGA" target="_blank" className="default-link">My Discord Server</a><br/>
+                    <a href="https://discord.gg/amj5vBjTQU" target="_blank" className="default-link">My Discord Server</a><br/>
                     <a href="https://github.com/nyaruku" target="_blank" className="default-link">GitHub</a><br/>
                     <a href="https://github.com/nyaruku/nekoha.moe" target="_blank" className="default-link">GitHub Repo</a><br/>
                     <a href="https://osu.ppy.sh/users/13817114" target="_blank" className="default-link">My osu! Profile</a><br/>
