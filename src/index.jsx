@@ -220,7 +220,7 @@ function Index() {
                   Alright, uhm.. I don't know what to really type here,<br />
                   here are some infos about me:
                 </p>
-                <ul>
+                <ul> 
                   <li>Age: <span className="text-secondary">21</span></li>
                   <li>Country: <span className="text-secondary">Germany</span></li>
                   <li>Fav Programming Language: <span className="text-secondary">C++</span></li>
