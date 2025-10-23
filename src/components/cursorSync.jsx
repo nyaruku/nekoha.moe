@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { io } from 'socket.io-client';
 
 const CursorSync = () => {
@@ -37,8 +37,13 @@ const CursorSync = () => {
 
     const username = getNameFromCookie();
     const handleMouseMove = (event) => {
+      const now = Date.now();
+      if (now - lastEmitRef.current < 20) return; // only emit every 20ms
+      lastEmitRef.current = now;
+
       const normX = event.pageX / document.documentElement.scrollWidth;
       const normY = event.pageY / document.documentElement.scrollHeight;
+      
       socket.emit('cursor_position', {
         id: socket.id,
         x: normX,
@@ -46,7 +51,6 @@ const CursorSync = () => {
         name: username,
       });
     };
-
     window.addEventListener('mousemove', handleMouseMove);
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, [socket]);

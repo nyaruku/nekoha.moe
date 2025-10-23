@@ -221,7 +221,7 @@ function Index() {
                   here are some infos about me:
                 </p>
                 <ul>
-                  <li>Age: <span className="text-secondary">20</span></li>
+                  <li>Age: <span className="text-secondary">21</span></li>
                   <li>Country: <span className="text-secondary">Germany</span></li>
                   <li>Fav Programming Language: <span className="text-secondary">C++</span></li>
                   <li>Pronouns <span className="text-secondary">Any</span></li>
@@ -318,7 +318,7 @@ function Index() {
                 <p className="mb-0">Users online: <span className="text-secondary" id="userCount"></span></p>
                 <p className="mb-0">Server uptime: <span className="text-secondary" id="serverUptime"></span></p>
                 <p className="mb-0">Visits: <span className="text-secondary">{visitCount}</span></p>
-                <p className="mb-0">Server cost: <span className="text-secondary">7,50€</span> / Month</p>
+                <p className="mb-0">Server cost: <span className="text-secondary">23,26€</span> / Month</p>
                 <p className="mb-0">Domain cost: <span className="text-secondary">15,33€</span> / Year</p>
               </div>
             </div>
@@ -395,7 +395,6 @@ function Index() {
           <div className="card-body text-center">
             <div class="row align-items-center mb-2">
               <a href="/privacy" target="_blank" class="default-link col-12">Privacy Policy</a>
-              <a href="https://icecast.nekoha.moe" target="_blank" class="default-link col-12">Icecast2 Dashboard</a>
             </div>
             <span>Compiled on: {dayjs(__BUILD_DATE__).format('DD.MM.YYYY HH:mm:ss')}</span>
           </div>
