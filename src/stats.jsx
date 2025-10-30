@@ -223,6 +223,9 @@ function LogStats() {
           <div className="progress-bar-value"></div>
         </div>
       )}
+      <div className="bg-info w-100 p-2 text-center">
+        <a className="text-white" href="https://discord.gg/QNCmZBqwBQ">Join the Discord Server</a>
+      </div>
       <div className="container py-4 px-3 mx-auto">
         <div className="d-flex flex-column align-items-center">
           <p className="form-label">Select Channel</p>

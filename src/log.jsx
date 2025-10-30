@@ -215,6 +215,9 @@ export default function Log() {
           <div className="scrollable-content">
             <form onSubmit={(e) => { e.preventDefault(); fetchInitialEntries(); }}>
               <div className="col-12 mb-2">
+                <a href="https://discord.gg/QNCmZBqwBQ" class="btn btn-info col-12">
+                  Join the Discord Server
+                </a>
                 <label className="form-label">Select Channel</label>
                 <select className="form-select" name="channel" value={filters.channel} onChange={handleChange}>
                     <option value="allm">"All Channels"</option>

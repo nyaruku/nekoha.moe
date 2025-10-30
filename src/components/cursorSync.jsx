@@ -3,7 +3,7 @@ import { io } from 'socket.io-client';
 
 const CursorSync = () => {
   const svgCursorPath = '/images/cursor.svg';
-
+  const lastEmitRef = useRef(0);
   const getNameFromCookie = () => {
     const name = document.cookie
       .split('; ')
